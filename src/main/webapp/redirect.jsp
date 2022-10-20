@@ -40,28 +40,41 @@
 
                 <!-- Content Row -->
                 <div class="row">
+                    <%
+                        String username = request.getRemoteUser();
+                        boolean admin = request.isUserInRole("admin");
+                        boolean responsable = request.isUserInRole("responsableClient");
+                        boolean partner = request.isUserInRole("partners");
 
+                        if (admin) {
+                    %>
                     <div class="card m-4" style="width: 20rem;">
                         <img class="card-img-top" src="img/undraw_admin.png" alt="Card image cap">
                         <div class="card-body">
-                            <a href="admin/home.jsp" class="card-link"><h5 class="card-title text-center">Admin Account</h5></a>
+                            <a href="admin/home.jsp" class="card-link"><h5 class="card-title text-center">System Administration</h5></a>
                         </div>
                     </div>
-
+                    <%
+                        }
+                        if (responsable || admin) {
+                    %>
                     <div class="card  m-4" style="width: 20rem;">
                         <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">
                         <div class="card-body">
-                            <a href="responsable-client/home.html" class="card-link"><h5 class="card-title text-center">Responsable Client Account</h5></a>
+                            <a href="responsable-client/home.jsp" class="card-link"><h5 class="card-title text-center">Customer Management</h5></a>
                         </div>
                     </div>
-
+                    <%
+                        }
+                        if (partner || admin) {
+                    %>
                     <div class="card  m-4" style="width: 20rem;">
                         <img class="card-img-top" src="img/undraw_partner.svg" alt="Card image cap">
                         <div class="card-body">
-                            <a href="partner/home.html" class="card-link"><h5 class="card-title text-center">Partner Account</h5></a>
+                            <a href="partner/home.jsp" class="card-link"><h5 class="card-title text-center">Product Management</h5></a>
                         </div>
                     </div>
-
+                    <% } %>
                 </div>
     </div>
     </div>

@@ -43,7 +43,11 @@
 
 <body>
 
-<div class="container mt-5">
+<div class="container">
+
+    <div class="mt-5">
+        <h1 class="text-center text-white"><%= "GateSafe" %></h1>
+    </div>
 
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">

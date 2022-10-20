@@ -63,6 +63,7 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>responsableClient</role-name>
+            <role-name>admin</role-name>
         </auth-constraint>
 <!--        <user-data-constraint>-->
 <!--            <transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
@@ -80,6 +81,7 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>partners</role-name>
+            <role-name>admin</role-name>
         </auth-constraint>
 <!--        <user-data-constraint>-->
 <!--            <transport-guarantee>CONFIDENTIAL</transport-guarantee>-->

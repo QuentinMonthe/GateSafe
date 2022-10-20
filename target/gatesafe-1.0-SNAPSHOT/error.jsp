@@ -44,12 +44,12 @@
 
 <div class="container">
 
-    <div class="mt-5">
+    <div class="mt-4">
         <h1 class="text-center text-white"><%= "GateSafe" %></h1>
     </div>
 
     <!-- Outer Row -->
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-1">
 
         <div class="col-xl-10 col-lg-12 col-md-9">
 
@@ -65,24 +65,36 @@
                                 </div>
                                 <br>
 
-                                <div class="text-center">
-                                    <div class="h6 text-gray-900 mb-4">Authentication failed for
-                                        <% request.getParameter("j_username"); %>
+                                <form method="POST" action="j_security_check" class="user">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                               id="exampleInputEmail" aria-describedby="emailHelp"
+                                               placeholder="User name" name="j_username" required>
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder="Password"
+                                               name="j_password" required>
+                                    </div>
 
-                                <form class="user">
-                                    <a href="redirect.jsp">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Remember
+                                                Me</label>
+                                        </div>
+                                    </div>
+                                    <a href="admin/home.html">
                                         <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                     </a>
                                 </form>
 
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    <a class="small" href="forgot-password.jsp">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="register.jsp">Create an Account!</a>
                                 </div>
                             </div>
                         </div>
