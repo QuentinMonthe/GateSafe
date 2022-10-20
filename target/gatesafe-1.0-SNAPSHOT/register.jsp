@@ -84,7 +84,7 @@
                                            id="exampleRepeatPassword" placeholder="Repeat Password">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group d-flex justify-content-between" style="font-size: 0.8rem; border-radius: 10rem; padding: 0.75rem 1rem;">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="admin">
                                     <label class="form-check-label" for="inlineRadio1">Administrator</label>
