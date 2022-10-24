@@ -44,8 +44,12 @@
 
 <div class="container">
 
+  <div class="mt-4">
+    <h1 class="text-center text-white"><%= "GateSafe" %></h1>
+  </div>
+
   <!-- Outer Row -->
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mt-1">
 
     <div class="col-xl-10 col-lg-12 col-md-9 ">
 
@@ -73,7 +77,7 @@
                 </form>
                 <hr>
                 <div class="text-center">
-                  <a class="small" href="register.jsp">Create an Account!</a>
+                  <a class="small" href="register.jsp">Create a Partner Account!</a>
                 </div>
                 <div class="text-center">
                   <a class="small" href="redirect.jsp">Already have an account? Login!</a>

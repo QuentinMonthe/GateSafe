@@ -41,7 +41,6 @@
                 <!-- Content Row -->
                 <div class="row">
                     <%
-                        String username = request.getRemoteUser();
                         boolean admin = request.isUserInRole("admin");
                         boolean responsable = request.isUserInRole("responsableClient");
                         boolean partner = request.isUserInRole("partners");

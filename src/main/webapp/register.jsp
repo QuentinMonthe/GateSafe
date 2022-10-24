@@ -39,13 +39,31 @@
 
     </style>
 
+    <script>
+        function myFunction() {
+            const pass1 = document.getElementById("exampleInputPassword").value;
+            const pass2 = document.getElementById("exampleRepeatPassword").value;
+            if (pass1 != pass2) {
+                //alert("Passwords Do not match");
+                document.getElementById("exampleInputPassword").style.borderColor = "#E34234";
+                document.getElementById("exampleRepeatPassword").style.borderColor = "#E34234";
+                return false
+            }
+            else {
+                // alert("Passwords Match!!!");
+                // document.getElementById("regForm").submit();
+                return true;
+            }
+        }
+    </script>
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <div class="mt-5">
+    <div class="mt-4">
         <h1 class="text-center text-white"><%= "GateSafe" %></h1>
     </div>
 
@@ -57,58 +75,32 @@
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Create a Partner Account!</h1>
                         </div>
-                        <form class="user">
+                        <form class="user" id="regForm" action="register" method="post">
+                            <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                           name="user_name" placeholder="Username" required>
+                            </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           placeholder="First Name">
+                                    <input type="password" class="form-control form-control-user" name="user_password"
+                                           id="exampleInputPassword" placeholder="Password" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                           placeholder="Last Name">
+                                    <input type="password" class="form-control form-control-user" name="user_repeat_pass"
+                                           id="exampleRepeatPassword" placeholder="Repeat Password" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                       placeholder="Email Address">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user"
-                                           id="exampleInputPassword" placeholder="Password">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user"
-                                           id="exampleRepeatPassword" placeholder="Repeat Password">
+                                <div class="custom-control custom-checkbox small">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="user_account" value="partners" required>
+                                    <label class="custom-control-label" for="customCheck">Partner</label>
                                 </div>
                             </div>
-                            <div class="form-group d-flex justify-content-between" style="font-size: 0.8rem; border-radius: 10rem; padding: 0.75rem 1rem;">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="admin">
-                                    <label class="form-check-label" for="inlineRadio1">Administrator</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="responsableClient">
-                                    <label class="form-check-label" for="inlineRadio2">Client Responsible</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="partners">
-                                    <label class="form-check-label" for="inlineRadio3">Partner</label>
-                                </div>
-                            </div>
-                            <a href="register.jsp" class="btn btn-primary btn-user btn-block">
-                                Register Account
-                            </a>
-                            <!--
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                            </a> -->
+
+                            <input type="submit" onclick="return myFunction()" value="Register Account" class="btn btn-primary btn-user btn-block">
                         </form>
                         <hr>
                         <div class="text-center">

@@ -26,7 +26,7 @@
 
     <resource-ref>
         <description>DB Connection</description>
-        <res-ref-name>jdbc/formation</res-ref-name>
+        <res-ref-name>jdbc/webgate</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
@@ -36,6 +36,8 @@
         <web-resource-collection>
             <web-resource-name>Admin resources</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
+            <url-pattern>/responsable-client/*</url-pattern>
+            <url-pattern>/partner/*</url-pattern>
             <url-pattern>/redirect.jsp</url-pattern>
             <http-method>PUT</http-method>
             <http-method>DELETE</http-method>

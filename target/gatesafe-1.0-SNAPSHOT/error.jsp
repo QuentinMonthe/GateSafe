@@ -84,7 +84,7 @@
                                                 Me</label>
                                         </div>
                                     </div>
-                                    <a href="admin/home.html">
+                                    <a href="register.jsp">
                                         <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                     </a>
                                 </form>
