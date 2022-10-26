@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.gate.gatesafe.PasswordSecure" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %><%--
   Created by IntelliJ IDEA.
   User: NASH
   Date: 15/10/2022
@@ -74,15 +75,24 @@
                                                name="j_password" required>
                                     </div>
 
+<%--                                    <%--%>
+<%--                                        String pass=null;--%>
+<%--                                        try {--%>
+<%--                                            PasswordSecure password = new PasswordSecure(j_password);--%>
+<%--                                            pass=password.getPass();--%>
+<%--                                        } catch (NoSuchAlgorithmException e) {--%>
+<%--                                            e.printStackTrace();--%>
+<%--                                        }--%>
+<%--                                    %>--%>
+
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember
-                                                Me</label>
+                                            <label class="custom-control-label" for="customCheck">Remember Me</label>
                                         </div>
                                     </div>
                                     <a href="redirect.jsp">
-                                        <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
+                                        <input type="submit" onclick="return " value="Login" class="btn btn-primary btn-user btn-block">
                                     </a>
 
                                 </form>

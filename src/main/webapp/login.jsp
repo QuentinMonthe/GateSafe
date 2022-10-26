@@ -75,6 +75,16 @@
                                                name="j_password" required>
                                     </div>
 
+<%--                                    <%--%>
+<%--                                        String pass=null;--%>
+<%--                                        try {--%>
+<%--                                            PasswordSecure password = new PasswordSecure(j_password);--%>
+<%--                                            pass=password.getPass();--%>
+<%--                                        } catch (NoSuchAlgorithmException e) {--%>
+<%--                                            e.printStackTrace();--%>
+<%--                                        }--%>
+<%--                                    %>--%>
+
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">

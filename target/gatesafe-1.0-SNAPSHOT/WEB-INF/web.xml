@@ -22,6 +22,9 @@
     <filter-mapping>
         <filter-name>noCacheFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/responsible-client/*</url-pattern>
+        <url-pattern>/partner/*</url-pattern>
+        <url-pattern>/redirect.jsp</url-pattern>
     </filter-mapping>
 
     <resource-ref>
@@ -36,7 +39,7 @@
         <web-resource-collection>
             <web-resource-name>Admin resources</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
-            <url-pattern>/responsable-client/*</url-pattern>
+            <url-pattern>/responsible-client/*</url-pattern>
             <url-pattern>/partner/*</url-pattern>
             <url-pattern>/redirect.jsp</url-pattern>
             <http-method>PUT</http-method>
@@ -47,16 +50,16 @@
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
-<!--        <user-data-constraint>-->
-<!--            <transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
-<!--        </user-data-constraint>-->
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
 
     <!--    Contrainte de securite des ressources responsable client-->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Responsable client resources</web-resource-name>
-            <url-pattern>/responsable-client/*</url-pattern>
+            <url-pattern>/responsible-client/*</url-pattern>
             <url-pattern>/redirect.jsp</url-pattern>
             <http-method>PUT</http-method>
             <http-method>DELETE</http-method>
@@ -67,9 +70,9 @@
             <role-name>responsableClient</role-name>
             <role-name>admin</role-name>
         </auth-constraint>
-<!--        <user-data-constraint>-->
-<!--            <transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
-<!--        </user-data-constraint>-->
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
 
     <!--    Contrainte de securite des ressources partner-->
@@ -85,10 +88,15 @@
             <role-name>partners</role-name>
             <role-name>admin</role-name>
         </auth-constraint>
-<!--        <user-data-constraint>-->
-<!--            <transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
-<!--        </user-data-constraint>-->
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
+
+<!--    <login-config>-->
+<!--        <auth-method>BASIC</auth-method>-->
+<!--        <realm-name>Admin</realm-name>-->
+<!--    </login-config>-->
 
     <login-config>
         <auth-method>FORM</auth-method>

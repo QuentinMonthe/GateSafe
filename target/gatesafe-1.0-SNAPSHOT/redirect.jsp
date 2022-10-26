@@ -60,7 +60,7 @@
                     <div class="card  m-4" style="width: 20rem;">
                         <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">
                         <div class="card-body">
-                            <a href="responsable-client/home.jsp" class="card-link"><h5 class="card-title text-center">Customer Management</h5></a>
+                            <a href="responsible-client/home.jsp" class="card-link"><h5 class="card-title text-center">Customer Management</h5></a>
                         </div>
                     </div>
                     <%

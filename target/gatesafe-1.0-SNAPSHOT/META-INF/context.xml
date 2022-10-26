@@ -21,4 +21,7 @@
            dataSourceName="jdbc/webgate" localDataSource="true" userTable="users" userRoleTable="roles"  userNameCol="name"
            userCredCol="password" roleNameCol="role" />
 
+<!--    <Realm className="org.apache.catalina.realm.JAASRealm" appName="GateSafe"-->
+<!--           userClassNames="com.gate.gatesafe.UserPrincipal" roleClassNames="com.gate.gatesafe.RolePrincipal" />-->
+
 </Context>
