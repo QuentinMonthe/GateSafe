@@ -10,23 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3584dfc6-c77f-47f7-9bc5-cf5645c843b8" name="Changes" comment="Create aacount">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/GateLoginModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/RolePrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/UserPrincipal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/PasswordSecure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/PasswordSecure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/RegisterServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/redirect.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/redirect.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/responsable-client/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/responsible-client/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/RegisterServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/PasswordSecure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/PasswordSecure.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/META-INF/context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/RegisterServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/redirect.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/redirect.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/responsable-client/home.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/PasswordSecure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/PasswordSecure.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +59,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/responsable-client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/gate/gatesafe" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,6 +68,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\java\com\gate\gatesafe" />
       <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp\responsable-client" />
       <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp\partner" />
     </key>
@@ -195,6 +191,12 @@
       <workItem from="1666619661701" duration="1296000" />
       <workItem from="1666623224901" duration="17690000" />
       <workItem from="1666743168628" duration="13464000" />
+      <workItem from="1666827306154" duration="1073000" />
+      <workItem from="1666855026152" duration="3017000" />
+      <workItem from="1666952808462" duration="480000" />
+      <workItem from="1666957254488" duration="1529000" />
+      <workItem from="1667032367235" duration="147000" />
+      <workItem from="1667043817166" duration="6160000" />
     </task>
     <task id="LOCAL-00001" summary="Create count">
       <created>1666261532452</created>

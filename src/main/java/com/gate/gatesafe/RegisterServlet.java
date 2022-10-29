@@ -39,8 +39,7 @@ public class RegisterServlet extends HttpServlet {
             rs.next();
             String Countrow = rs.getString(1);
             if(Countrow.equals("0")) {
-                int i = st.executeUpdate("insert into users(name, password) values ('" + userName + "','" + pass + "')");
-                int a = st.executeUpdate("insert into roles (name, role) values ('" + userName + "','" + account + "')");
+                int i = st.executeUpdate("insert into users(name, password, role) values ('" + userName + "','" + pass + "','" + account + "')");
 
                 response.sendRedirect(request.getContextPath() + "/redirect.jsp");
             }

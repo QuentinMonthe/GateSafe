@@ -37,12 +37,11 @@
             <h1 class="text-center text-white"><%= "GateSafe" %></h1>
             <br/>
 
-
                 <!-- Content Row -->
                 <div class="row">
                     <%
                         boolean admin = request.isUserInRole("admin");
-                        boolean responsable = request.isUserInRole("responsableClient");
+                        boolean responsible = request.isUserInRole("customManager");
                         boolean partner = request.isUserInRole("partners");
 
                         if (admin) {
@@ -55,7 +54,7 @@
                     </div>
                     <%
                         }
-                        if (responsable || admin) {
+                        if (responsible || admin) {
                     %>
                     <div class="card  m-4" style="width: 20rem;">
                         <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">

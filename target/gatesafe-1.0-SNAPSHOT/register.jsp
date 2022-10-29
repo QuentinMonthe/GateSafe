@@ -95,7 +95,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox small">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="user_account" value="partners" required>
+                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="user_account" value="customManager" required>
                                     <label class="custom-control-label" for="customCheck">Partner</label>
                                 </div>
                             </div>

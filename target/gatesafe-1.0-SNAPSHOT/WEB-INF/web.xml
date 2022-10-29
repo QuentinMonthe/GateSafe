@@ -27,12 +27,12 @@
         <url-pattern>/redirect.jsp</url-pattern>
     </filter-mapping>
 
-    <resource-ref>
-        <description>DB Connection</description>
-        <res-ref-name>jdbc/webgate</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>
+<!--    <resource-ref>-->
+<!--        <description>DB Connection</description>-->
+<!--        <res-ref-name>jdbc/webgate</res-ref-name>-->
+<!--        <res-type>javax.sql.DataSource</res-type>-->
+<!--        <res-auth>Container</res-auth>-->
+<!--    </resource-ref>-->
 
     <!--    Contrainte de securite des ressources administrateur-->
     <security-constraint>
@@ -67,7 +67,7 @@
             <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>responsableClient</role-name>
+            <role-name>customManager</role-name>
             <role-name>admin</role-name>
         </auth-constraint>
         <user-data-constraint>
@@ -93,11 +93,6 @@
         </user-data-constraint>
     </security-constraint>
 
-<!--    <login-config>-->
-<!--        <auth-method>BASIC</auth-method>-->
-<!--        <realm-name>Admin</realm-name>-->
-<!--    </login-config>-->
-
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>authentification-file</realm-name>
@@ -113,7 +108,7 @@
     </security-role>
     <security-role>
         <description>Responsable client</description>
-        <role-name>responsableClient</role-name>
+        <role-name>customManager</role-name>
     </security-role>
     <security-role>
         <description>Partner</description>
