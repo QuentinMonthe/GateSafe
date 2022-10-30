@@ -40,18 +40,61 @@
     </style>
 
     <script>
-        function myFunction() {
+        let validateState = false;
+        let checkState = false;
+
+        function validate() {
+            const str = document.getElementById("exampleInputPassword").value;
+            if (str != null) {
+                if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
+                    str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
+                    str.length >= 8 && str.length <= 20) {
+                    const valid = document.getElementById("exampleInputPassword");
+                    valid.className += "is-valid";
+
+                    const text = document.getElementById("passwordBlock");
+                    text.innerText = "Password secure!";
+                    text.className += "valid-feedback";
+
+                    validateState = true;
+                }
+                else {
+                    const valid = document.getElementById("exampleInputPassword");
+                    valid.className += "is-invalid";
+
+                    const text = document.getElementById("passwordBlock");
+                    text.innerText = "Password not secure! Please change it";
+                    text.className += "invalid-feedback";
+
+                    validateState = false;
+                }
+            }
+        }
+
+        function check() {
             const pass1 = document.getElementById("exampleInputPassword").value;
             const pass2 = document.getElementById("exampleRepeatPassword").value;
             if (pass1 != pass2) {
-                //alert("Passwords Do not match");
-                document.getElementById("exampleInputPassword").style.borderColor = "#E34234";
-                document.getElementById("exampleRepeatPassword").style.borderColor = "#E34234";
-                return false
+                const validPass = document.getElementById("exampleInputPassword");
+                validPass.className += "is-invalid";
+
+                const validCheck = document.getElementById("exampleRepeatPassword");
+                validCheck.className += "is-invalid";
+
+                checkState = false;
+
+            } else {
+                checkState = true;
             }
-            else {
+        }
+
+        function myFunction() {
+            if (!validateState || !checkState) {
+                // alert("Passwords Not Match!!!");
+                return false;
+            } else {
                 // alert("Passwords Match!!!");
-                // document.getElementById("regForm").submit();
+                document.getElementById("regForm").submit();
                 return true;
             }
         }
@@ -79,28 +122,30 @@
                         </div>
                         <form class="user" id="regForm" action="register" method="post">
                             <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           name="user_name" placeholder="Username" required>
+                                <input type="text" class="form-control form-control-user" id="exampleFirstName" name="user_name" placeholder="Username" required>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user" name="user_password"
-                                           id="exampleInputPassword" placeholder="Password" required>
+                                    <input type="password" class="form-control form-control-user " name="user_password"
+                                           id="exampleInputPassword" placeholder="Password" required onchange="validate()">
+                                    <div id="passwordBlock" class="form-text "></div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" name="user_repeat_pass"
-                                           id="exampleRepeatPassword" placeholder="Repeat Password" required>
+                                    <input type="password" class="form-control form-control-user " name="user_repeat_pass"
+                                           id="exampleRepeatPassword" placeholder="Repeat Password" required onchange="check()">
+<%--                                    <div id="passwordHelp" class="form-text form-control-user"></div>--%>
                                 </div>
                             </div>
+<%--                            <input class="form-control form-control-user" type="text" placeholder="Partner" name="user_account" value="partners" aria-label="Disabled input example" disabled>--%>
                             <div class="form-group">
-                                <div class="custom-control custom-checkbox small">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="user_account" value="customManager" required>
+                                <div class="custom-control custom-checkbox small text-center">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck" name="user_account" value="partners" checked required>
                                     <label class="custom-control-label" for="customCheck">Partner</label>
                                 </div>
                             </div>
 
-                            <input type="submit" onclick="return myFunction()" value="Register Account" class="btn btn-primary btn-user btn-block">
+                            <input onclick="return myFunction()" value="Register Account" class="btn btn-primary btn-user btn-block">
                         </form>
                         <hr>
                         <div class="text-center">
