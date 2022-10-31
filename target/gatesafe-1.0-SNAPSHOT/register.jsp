@@ -40,8 +40,7 @@
     </style>
 
     <script>
-        let validateState = false;
-        let checkState = false;
+        let cond = false;
 
         function validate() {
             const str = document.getElementById("exampleInputPassword").value;
@@ -56,7 +55,7 @@
                     text.innerText = "Password secure!";
                     text.className += "valid-feedback";
 
-                    validateState = true;
+                    cond = true;
                 }
                 else {
                     const valid = document.getElementById("exampleInputPassword");
@@ -66,37 +65,48 @@
                     text.innerText = "Password not secure! Please change it";
                     text.className += "invalid-feedback";
 
-                    validateState = false;
+                    cond = false;
                 }
             }
         }
 
-        function check() {
-            const pass1 = document.getElementById("exampleInputPassword").value;
-            const pass2 = document.getElementById("exampleRepeatPassword").value;
-            if (pass1 != pass2) {
-                const validPass = document.getElementById("exampleInputPassword");
-                validPass.className += "is-invalid";
-
-                const validCheck = document.getElementById("exampleRepeatPassword");
-                validCheck.className += "is-invalid";
-
-                checkState = false;
-
-            } else {
-                checkState = true;
-            }
-        }
+        // function check() {
+        //     const pass1 = document.getElementById("exampleInputPassword").value;
+        //     const pass2 = document.getElementById("exampleRepeatPassword").value;
+        //     if (pass1 != pass2) {
+        //         const validPass = document.getElementById("exampleInputPassword");
+        //         validPass.className += "is-invalid";
+        //
+        //         const validCheck = document.getElementById("exampleRepeatPassword");
+        //         validCheck.className += "is-invalid";
+        //
+        //         return false;
+        //
+        //     } else {
+        //         return true;
+        //     }
+        // }
 
         function myFunction() {
-            if (!validateState || !checkState) {
-                // alert("Passwords Not Match!!!");
-                return false;
-            } else {
-                // alert("Passwords Match!!!");
-                document.getElementById("regForm").submit();
-                return true;
+            const pass1 = document.getElementById("exampleInputPassword").value;
+            const pass2 = document.getElementById("exampleRepeatPassword").value;
+
+            if (cond) {
+                if (pass1 != pass2) {
+                    // alert("Passwords Not Match!!!");
+                    const validPass = document.getElementById("exampleInputPassword");
+                    validPass.className += "is-invalid";
+
+                    const validCheck = document.getElementById("exampleRepeatPassword");
+                    validCheck.className += "is-invalid";
+                    return false;
+                } else {
+                    // alert("Passwords Match!!!");
+                    document.getElementById("regForm").submit();
+                    return true;
+                }
             }
+            return false;
         }
     </script>
 
@@ -133,7 +143,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password" class="form-control form-control-user " name="user_repeat_pass"
-                                           id="exampleRepeatPassword" placeholder="Repeat Password" required onchange="check()">
+                                           id="exampleRepeatPassword" placeholder="Repeat Password" required>
 <%--                                    <div id="passwordHelp" class="form-text form-control-user"></div>--%>
                                 </div>
                             </div>
