@@ -159,8 +159,9 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-               resourceName="UserDatabase"/>
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+        
+        <!-- <CredentialHandler className="org.apache.catalina.realm.MessageDigestCredentialHandler" algorithm="sha-256" /> -->
       </Realm>
 
       <Host name="localhost"  appBase="webapps"
@@ -171,13 +172,23 @@
         <!--
         <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         -->
-
+encrypt password methode j_security_check
         <!-- Access log processes all example.
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
-        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+        
+        <!-- <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log" suffix=".txt"
-               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" 
+          /> -->
+
+        <Valve className="org.apache.catalina.valves.ErrorReportValve"
+               errorCode.400="webapps/ROOT/error400.html"
+               errorCode.403="webapps/ROOT/error403.html"
+               errorCode.404="webapps/ROOT/error404.html"
+               errorCode.0="webapps/ROOT/errorOthers.html"
+               showReport="false"
+               showServerInfo="false" />
 
       </Host>
     </Engine>

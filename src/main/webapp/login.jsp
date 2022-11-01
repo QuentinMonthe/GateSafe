@@ -75,16 +75,6 @@
                                                name="j_password" required>
                                     </div>
 
-<%--                                    <%--%>
-<%--                                        String pass=null;--%>
-<%--                                        try {--%>
-<%--                                            PasswordSecure password = new PasswordSecure(j_password);--%>
-<%--                                            pass=password.getPass();--%>
-<%--                                        } catch (NoSuchAlgorithmException e) {--%>
-<%--                                            e.printStackTrace();--%>
-<%--                                        }--%>
-<%--                                    %>--%>
-
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
                                             <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -92,7 +82,7 @@
                                         </div>
                                     </div>
                                     <a href="redirect.jsp">
-                                        <input type="submit" onclick="return " value="Login" class="btn btn-primary btn-user btn-block">
+                                        <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
                                     </a>
 
                                 </form>
@@ -116,11 +106,11 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<%--<script src="vendor/jquery/jquery.min.js"></script>--%>
-<%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<%--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--%>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin-2.min.js"></script>

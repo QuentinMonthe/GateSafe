@@ -18,8 +18,18 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName=request.getParameter("user_name");
+        String userEmail=request.getParameter("user_email");
         String userPassword=request.getParameter("user_password");
         String account=request.getParameter("user_account");
+
+        String idUser;
+        if ( account == "partners") {
+            idUser = "PTN";
+        } else if (account == "admin") {
+            idUser = "ADM";
+        } else {
+            idUser = "REC";
+        }
 
         String pass=null;
         try {
@@ -39,9 +49,21 @@ public class RegisterServlet extends HttpServlet {
             rs.next();
             String Countrow = rs.getString(1);
             if(Countrow.equals("0")) {
-                int i = st.executeUpdate("insert into users(name, password, role) values ('" + userName + "','" + pass + "','" + account + "')");
+                rs = st.executeQuery("select count(*) from users where role='"+account+"'");
+                rs.next();
+                int tpm = rs.getInt(1);
+                tpm++;
+                idUser += Integer.toString(tpm);
 
-                response.sendRedirect(request.getContextPath() + "/redirect.jsp");
+                int i = st.executeUpdate("insert into users(id_user, name, password, role, email) values ('" + idUser + "','" + userName + "','" + pass + "','" + account + "','" + userEmail + "')");
+
+                String test = request.getRemoteUser();
+                if (test == null) {
+                    response.sendRedirect(request.getContextPath() + "/redirect.jsp");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/admin/home.jsp");
+                }
+
             }
         } catch (Exception e) {
             System.out.print(e);

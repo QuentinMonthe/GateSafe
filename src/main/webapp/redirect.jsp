@@ -47,30 +47,36 @@
                         if (admin) {
                     %>
                     <div class="card m-4" style="width: 20rem;">
-                        <img class="card-img-top" src="img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="admin/home.jsp" class="card-link"><h5 class="card-title text-center">System Administration</h5></a>
-                        </div>
+                        <a href="admin/home.jsp" class="card-link">
+                            <img class="card-img-top" src="img/undraw_admin.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">System Administration</h5>
+                            </div>
+                        </a>
                     </div>
                     <%
                         }
                         if (responsible || admin) {
                     %>
                     <div class="card  m-4" style="width: 20rem;">
-                        <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="responsible-client/home.jsp" class="card-link"><h5 class="card-title text-center">Customer Management</h5></a>
-                        </div>
+                        <a href="responsible-client/home.jsp" class="card-link">
+                            <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Customer Management</h5>
+                            </div>
+                        </a>
                     </div>
                     <%
                         }
                         if (partner || admin) {
                     %>
                     <div class="card  m-4" style="width: 20rem;">
-                        <img class="card-img-top" src="img/undraw_partner.svg" alt="Card image cap">
-                        <div class="card-body">
-                            <a href="partner/home.jsp" class="card-link"><h5 class="card-title text-center">Product Management</h5></a>
-                        </div>
+                        <a href="partner/home.jsp" class="card-link">
+                            <img class="card-img-top" src="img/undraw_partner.svg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Product Management</h5>
+                            </div>
+                        </a>
                     </div>
                     <% } %>
                 </div>

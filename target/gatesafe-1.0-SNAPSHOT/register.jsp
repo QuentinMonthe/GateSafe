@@ -40,35 +40,33 @@
     </style>
 
     <script>
-        let cond = false;
-
-        function validate() {
-            const str = document.getElementById("exampleInputPassword").value;
-            if (str != null) {
-                if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
-                    str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
-                    str.length >= 8 && str.length <= 20) {
-                    const valid = document.getElementById("exampleInputPassword");
-                    valid.className += "is-valid";
-
-                    const text = document.getElementById("passwordBlock");
-                    text.innerText = "Password secure!";
-                    text.className += "valid-feedback";
-
-                    cond = true;
-                }
-                else {
-                    const valid = document.getElementById("exampleInputPassword");
-                    valid.className += "is-invalid";
-
-                    const text = document.getElementById("passwordBlock");
-                    text.innerText = "Password not secure! Please change it";
-                    text.className += "invalid-feedback";
-
-                    cond = false;
-                }
-            }
-        }
+        // function validate() {
+        //     const str = document.getElementById("exampleInputPassword").value;
+        //     if (str != null) {
+        //         if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
+        //             str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
+        //             str.length >= 8 && str.length <= 20) {
+        //             const valid = document.getElementById("exampleInputPassword");
+        //             valid.className += "is-valid";
+        //
+        //             const text = document.getElementById("passwordBlock");
+        //             text.innerText = "Password secure!";
+        //             text.className += "valid-feedback";
+        //
+        //             return true;
+        //         }
+        //         else {
+        //             const valid = document.getElementById("exampleInputPassword");
+        //             valid.className += "is-invalid";
+        //
+        //             const text = document.getElementById("passwordBlock");
+        //             text.innerText = "Password not secure! Please change it";
+        //             text.className += "invalid-feedback";
+        //
+        //             return false;
+        //         }
+        //     }
+        // }
 
         // function check() {
         //     const pass1 = document.getElementById("exampleInputPassword").value;
@@ -88,24 +86,29 @@
         // }
 
         function myFunction() {
-            const pass1 = document.getElementById("exampleInputPassword").value;
-            const pass2 = document.getElementById("exampleRepeatPassword").value;
+            const pass1 = document.getElementById("exampleInputPassword");
+            const pass2 = document.getElementById("exampleRepeatPassword");
+            const str1 = pass1.value;
+            const str2 = pass2.value;
 
-            if (cond) {
-                if (pass1 != pass2) {
-                    // alert("Passwords Not Match!!!");
-                    const validPass = document.getElementById("exampleInputPassword");
-                    validPass.className += "is-invalid";
+            if (str1.match( /[0-9]/g) && str1.match( /[A-Z]/g) &&
+                str1.match(/[a-z]/g) && str1.match( /[^a-zA-Z\d]/g) &&
+                str1.length >= 8 && str1.length <= 20 &&
+                str1 == str2) {
+                pass1.className += "is-valid";
 
-                    const validCheck = document.getElementById("exampleRepeatPassword");
-                    validCheck.className += "is-invalid";
-                    return false;
-                } else {
-                    // alert("Passwords Match!!!");
-                    document.getElementById("regForm").submit();
-                    return true;
-                }
+                const text = document.getElementById("passwordBlock");
+                text.innerText = "Password secure!";
+                text.className += "valid-feedback";
+
+                pass2.className += "is-valid";
+
+                document.getElementById("regForm").submit();
+                return true;
             }
+
+            pass1.className += "is-invalid";
+            pass2.className += "is-invalid";
             return false;
         }
     </script>
@@ -130,15 +133,19 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create a Partner Account!</h1>
                         </div>
-                        <form class="user" id="regForm" action="register" method="post">
+                        <form class="user" id="regForm" action="${pageContext.request.contextPath}/register" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="exampleFirstName" name="user_name" placeholder="Username" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="exampleEmail" name="user_email" placeholder="Email" required>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user " name="user_password"
-                                           id="exampleInputPassword" placeholder="Password" required onchange="validate()">
+                                           id="exampleInputPassword" placeholder="Password" required >
                                     <div id="passwordBlock" class="form-text "></div>
                                 </div>
                                 <div class="col-sm-6">
