@@ -85,6 +85,25 @@
         //     }
         // }
 
+        function strong_pass(){
+            const pass1 = document.getElementById("exampleInputPassword");
+            const str1=pass1.value;
+
+					if (str1.match( /[0-9]/g) && str1.match( /[A-Z]/g) &&
+						str1.match(/[a-z]/g) && str1.match( /[^a-zA-Z\d]/g) &&
+						str1.length >= 8 && str1.length <= 20){
+
+											const text = document.getElementById("passwordBlock");
+											text.innerText = "Password secure!";
+											text.className += "valid-feedback";
+
+											pass1.className += "is-valid";
+                    }else{
+											pass1.className += "is-invalid";
+						alert('Password Not Secure. Please enter a strong password.');
+                    }
+        }
+
         function myFunction() {
             const pass1 = document.getElementById("exampleInputPassword");
             const pass2 = document.getElementById("exampleRepeatPassword");
@@ -145,7 +164,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password" class="form-control form-control-user " name="user_password"
-                                           id="exampleInputPassword" placeholder="Password" required >
+                                           id="exampleInputPassword" placeholder="Password" required  onchange="return strong_pass()">
                                     <div id="passwordBlock" class="form-text "></div>
                                 </div>
                                 <div class="col-sm-6">

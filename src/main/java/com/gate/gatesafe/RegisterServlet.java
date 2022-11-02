@@ -6,6 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.util.Objects;
 
 @WebServlet(name = "registerServlet", value = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -23,9 +24,9 @@ public class RegisterServlet extends HttpServlet {
         String account=request.getParameter("user_account");
 
         String idUser;
-        if ( account == "partners") {
+        if (account.equals("partners")) {
             idUser = "PTN";
-        } else if (account == "admin") {
+        } else if (account.equals("admin")) {
             idUser = "ADM";
         } else {
             idUser = "REC";
