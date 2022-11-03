@@ -15,6 +15,8 @@ public class LogoutServlet extends HttpServlet {
         // Will call JAAS LoginModule logout() method
         if (session != null) session.invalidate();
 
+
+
         // Redirect the user to the secure web page.
         // Since the user is now logged out the
         // authentication form will be shown

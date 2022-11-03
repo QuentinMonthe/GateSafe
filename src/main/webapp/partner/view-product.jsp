@@ -1,10 +1,10 @@
+<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
-  User: NASH
-  Date: 01/11/2022
-  Time: 06:38
+  User: Bonarchi
+  Date: 03/11/2022
+  Time: 10:54 am
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GateSafe | Dashboard</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,20 +30,11 @@
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-    <style>
-        .form-user{
-            font-size: 0.8rem;
-            border-radius: 1rem;
-            padding: 1.5rem 1rem;
-        }
-    </style>
-
 </head>
 
 <body id="page-top">
 <%
     String username = request.getRemoteUser();
-    boolean admin = request.isUserInRole("admin");
 
 %>
 
@@ -76,30 +67,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Account Management
+            Account
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=manager" >
-                <i class="fas fa-user-cog"></i>
-                <span>Managers</span>
-            </a>
-        </li>
-
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=partner">
-                <i class="fas fa-users"></i>
-                <span>Partners</span>
-            </a>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="create-user.jsp">
-                <i class="fas fa-user-plus"></i>
-                <span>New Account</span>
+            <a class="nav-link" href="#" >
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Partner Information</span>
             </a>
         </li>
 
@@ -112,36 +87,32 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-handshake"></i>
+                <i class="fas fa-fw fa-folder"></i>
                 <span>Commands</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Infos Commands:</h6>
-                    <a class="collapse-item" href="#">Receive</a>
-                    <a class="collapse-item" href="#">Realize</a>
+                    <a class="collapse-item active" href="new-command.jsp">Initialize</a>
+                    <a class="collapse-item" href="command-status.jsp">Statut</a>
 
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatalogue"
                aria-expanded="true" aria-controls="collapseCatalogue">
-                <i class="fa fa-list"></i>
+                <i class="fas fa-fw fa-chart-area"></i>
                 <span>Catalogue</span>
             </a>
-            <div id="collapseCatalogue" class="collapse show" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
+            <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order Product:</h6>
-                    <a class="collapse-item active" href="view-all.jsp">View all</a>
-                    <a class="collapse-item" href="#">Category</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">End Product:</h6>
                     <a class="collapse-item" href="#">View all</a>
                     <a class="collapse-item" href="#">Category</a>
                 </div>
@@ -384,11 +355,10 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">All Products</h1>
-                    <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
-                        <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
-                        Administrator
-                    </div>
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        Customer Manager
+                    </a>
                 </div>
 
                 <!-- Content Row -->
@@ -403,8 +373,8 @@
 
                             while (rs.next()){
                     %>
-                    <div class="card col-lg-3 text-decoration-none" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_rocket.svg" alt="Card image cap">
+                    <a href="#" data-toggle="modal" data-target="#commandModal" class="card col-lg-3 mx-3 text-decoration-none" style="width: 18rem;">
+                        <img class="card-img-top" style="width: 16rem;" src="../img/undraw_rocket.svg" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= rs.getString(2) %>
@@ -414,7 +384,7 @@
                         <div class="card-footer">
                             <small class="text-muted">Price : <%= rs.getString(3) %> U</small>
                         </div>
-                    </div>
+                    </a>
                     <%
                             }
                             con.close();
@@ -424,6 +394,7 @@
                         }
                     %>
                 </div>
+
 
             </div>
             <!-- /.container-fluid -->
@@ -451,6 +422,26 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="commandModal" tabindex="-1" role="dialog" aria-labelledby="commandLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commandLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Command" to conform to buy this product</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/newCommand">Command</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

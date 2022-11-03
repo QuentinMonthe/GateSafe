@@ -112,7 +112,7 @@
                 <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Order Product:</h6>
-                        <a class="collapse-item" href="#">View all</a>
+                        <a class="collapse-item" href="">View all</a>
                         <a class="collapse-item" href="#">Category</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">End Product:</h6>
