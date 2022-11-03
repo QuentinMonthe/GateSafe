@@ -6,6 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+import java.util.Date;
 import java.util.Objects;
 
 @WebServlet(name = "registerServlet", value = "/register")
@@ -40,6 +41,8 @@ public class RegisterServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        String current_user = request.getRemoteUser();
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
@@ -48,24 +51,39 @@ public class RegisterServlet extends HttpServlet {
             String strQuery = "select count(*) from users where name='"+userName+"'";
             ResultSet rs = st.executeQuery(strQuery);
             rs.next();
-            String Countrow = rs.getString(1);
-            if(Countrow.equals("0")) {
-                rs = st.executeQuery("select count(*) from users where role='"+account+"'");
+            String Count = rs.getString(1);
+
+            if(Count.equals("0")) {
+                rs = st.executeQuery("select count(*) from users where role='" + account + "'");
                 rs.next();
                 int tpm = rs.getInt(1);
                 tpm++;
                 idUser += Integer.toString(tpm);
 
-                int i = st.executeUpdate("insert into users(id_user, name, password, role, email) values ('" + idUser + "','" + userName + "','" + pass + "','" + account + "','" + userEmail + "')");
+                if (current_user == null) {
 
-                String test = request.getRemoteUser();
-                if (test == null) {
                     response.sendRedirect(request.getContextPath() + "/redirect.jsp");
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/admin/home.jsp");
-                }
 
+                } else {
+                    rs = st.executeQuery("select id_user from users where name='" + current_user + "'");
+                    rs.next();
+
+                    String current_user_id = rs.getString(1);
+                    String activity = "Create";
+                    Activity trace = new Activity(current_user_id, activity, idUser);
+                    String description = trace.getDescription();
+                    Date date = trace.getDate();
+
+                    int i = st.executeUpdate("insert into users(id_user, name, password, role, email) values ('" + idUser + "','" + userName + "','" + pass + "','" + account + "','" + userEmail + "')");
+
+                    i = st.executeUpdate("insert into activity(author, type, description, date, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idUser + "')");
+
+                    response.sendRedirect(request.getContextPath() + "/admin/create-user.jsp");
+                }
+            } else {
+                response.sendRedirect(request.getContextPath() + "/register-error.jsp");
             }
+            conn.close();
         } catch (Exception e) {
             System.out.print(e);
             e.printStackTrace();

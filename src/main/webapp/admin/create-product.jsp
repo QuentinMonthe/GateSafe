@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: NASH
-  Date: 01/11/2022
-  Time: 06:38
+  Date: 03/11/2022
+  Time: 05:45
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,31 +36,6 @@
         }
     </style>
 
-    <script>
-        function checkFunction() {
-            const pass = document.getElementById("exampleInputPassword");
-            const str = pass.value;
-            if (str != null) {
-                if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
-                    str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
-                    str.length >= 8 && str.length <= 20) {
-                    pass.className += "is-valid";
-
-                    document.getElementById("registerForm").submit();
-                    return true;
-                }
-                else {
-                    pass.className += "is-invalid";
-
-                    const text = document.getElementById("passHelp");
-                    text.innerText = "Password not secure! Please change it";
-                    text.className += "invalid-feedback";
-
-                    return false;
-                }
-            }
-        }
-    </script>
 </head>
 
 <body id="page-top">
@@ -104,7 +79,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=manager" >
+            <a class="nav-link collapsed" href="view-users.jsp?account=manager" >
                 <i class="fas fa-user-cog"></i>
                 <span>Managers</span>
             </a>
@@ -112,7 +87,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=partner">
+            <a class="nav-link collapsed" href="view-users.jsp?account=partners">
                 <i class="fas fa-users"></i>
                 <span>Partners</span>
             </a>
@@ -152,20 +127,20 @@
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatalogue"
                aria-expanded="true" aria-controls="collapseCatalogue">
                 <i class="fa fa-list"></i>
                 <span>Catalogue</span>
             </a>
-            <div id="collapseCatalogue" class="collapse show" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
+            <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order Product:</h6>
-                    <a class="collapse-item active" href="view-all.jsp">View all</a>
+                    <a class="collapse-item" href="view-all.jsp?bool=true">View all</a>
                     <a class="collapse-item" href="#">Category</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">End Product:</h6>
-                    <a class="collapse-item" href="#">View all</a>
+                    <a class="collapse-item" href="view-all.jsp?bool=false">View all</a>
                     <a class="collapse-item" href="#">Category</a>
                 </div>
             </div>
@@ -407,7 +382,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">All Products</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
                         <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
                         Administrator
@@ -415,36 +390,55 @@
                 </div>
 
                 <!-- Content Row -->
-                <div class="card-deck">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
+                <div class="row justify-content-md-center">
+
+                    <div class="col col-lg-8 p-5 shadow-lg">
+                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/newProduct" class="user">
+                            <div class="form-group text-center h3">
+                                Create a new product
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+
+                                    <label class="col-form-label" for="product">Product Name</label>
+                                    <input type="text" class="form-control form-user" id="product" name="product"
+                                           placeholder="Ex. Blue Giga Night" required>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label class="col-form-label" for="price">Price</label>
+                                    <input type="number" class="form-control form-user" id="price" name="price"
+                                           placeholder="Ex: 250" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label" for="description">Description</label>
+                                <input type="text" class="form-control form-user" id="description" name="description"
+                                       placeholder="Ex: 250U = 05 Go 24 Hrs, 22hH to 06H" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label class="col-form-label" for="category">Category</label>
+                                    <input type="text" class="form-control form-user" id="category" name="category"
+                                           placeholder="Ex: Phone" required>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label class="col-form-label" for="quantity">Quantity</label>
+                                    <input type="number" class="form-control form-user" id="quantity" name="quantity"
+                                           placeholder="Ex: 250" required>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mt-4">
+                                <input type="submit" value="Validate" class="btn btn-primary btn-block"
+                                   style="padding: 0.75rem; border-radius: 1rem;">
+                            </div>
+                        </form>
                     </div>
                 </div>
 

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: NASH
   Date: 31/10/2022
@@ -33,7 +36,8 @@
 <body id="page-top">
 <%
     String username = request.getRemoteUser();
-    boolean admin = request.isUserInRole("admin");
+    String param = request.getParameter("account");
+//    boolean admin = request.isUserInRole("admin");
 
 %>
 
@@ -71,7 +75,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=manager" >
+            <a class="nav-link collapsed" href="view-users.jsp?account=manager" >
                 <i class="fas fa-user-cog"></i>
                 <span>Managers</span>
             </a>
@@ -79,7 +83,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=partner">
+            <a class="nav-link collapsed" href="view-users.jsp?account=partners">
                 <i class="fas fa-users"></i>
                 <span>Partners</span>
             </a>
@@ -391,49 +395,58 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>ID User</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                                </tfoot>
+<%--                                <tfoot>--%>
+<%--                                <tr>--%>
+<%--                                    <th>ID User</th>--%>
+<%--                                    <th>Username</th>--%>
+<%--                                    <th>Email</th>--%>
+<%--                                    <th>Role</th>--%>
+<%--                                    <th>Action</th>--%>
+<%--                                </tr>--%>
+<%--                                </tfoot>--%>
                                 <tbody>
+                                <%
+                                    String search;
+                                    if (param.equals("partner")) {
+                                        search = "partners";
+                                    } else {
+                                        search = "customManager";
+                                    }
+
+                                    try {
+                                        Class.forName("com.mysql.jdbc.Driver");
+                                        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
+                                        Statement st = con.createStatement();
+
+                                        ResultSet rs = st.executeQuery("select * from users where role = '"+ search +"' ");
+
+                                        while (rs.next()){
+                                %>
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
+                                    <td class="text-center"><%= rs.getString(1) %></td>
+                                    <td><%= rs.getString(2) %></td>
+                                    <td><%= rs.getString(5) %></td>
+                                    <td><%= rs.getString(4) %></td>
+                                    <td class="text-center">
+                                        <a href="#" data-toggle="modal" data-target="#editModal" class="text-reset"><i class="fas fa-edit"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#trashModal" class="text-danger"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
-                                </tr>
-                                <tr>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>San Francisco</td>
-                                    <td>66</td>
-                                    <td>2009/01/12</td>
-                                    <td>$86,000</td>
-                                </tr>
+                                <%
+                                        }
+                                        con.close();
+                                    }
+                                    catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                %>
 
                                 </tbody>
                             </table>

@@ -104,7 +104,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=manager" >
+            <a class="nav-link collapsed" href="view-users.jsp?account=manager" >
                 <i class="fas fa-user-cog"></i>
                 <span>Managers</span>
             </a>
@@ -112,7 +112,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="view-users.jsp?type=partner">
+            <a class="nav-link collapsed" href="view-users.jsp?account=partners">
                 <i class="fas fa-users"></i>
                 <span>Partners</span>
             </a>
@@ -161,11 +161,11 @@
             <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Order Product:</h6>
-                    <a class="collapse-item" href="#">View all</a>
+                    <a class="collapse-item" href="view-all.jsp?bool=true">View all</a>
                     <a class="collapse-item" href="#">Category</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">End Product:</h6>
-                    <a class="collapse-item" href="#">View all</a>
+                    <a class="collapse-item" href="view-all.jsp?bool=false">View all</a>
                     <a class="collapse-item" href="#">Category</a>
                 </div>
             </div>

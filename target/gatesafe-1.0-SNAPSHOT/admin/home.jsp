@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: NASH
   Date: 17/10/2022
@@ -33,7 +33,7 @@
 <body id="page-top">
 <%
     String username = request.getRemoteUser();
-    boolean admin = request.isUserInRole("admin");
+//    boolean admin = request.isUserInRole("admin");
 
 %>
 
@@ -71,7 +71,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="view-users.jsp?type=manager" >
+                <a class="nav-link collapsed" href="view-users.jsp?account=manager" >
                     <i class="fas fa-user-cog"></i>
                     <span>Managers</span>
                 </a>
@@ -79,7 +79,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="view-users.jsp?type=partner">
+                <a class="nav-link collapsed" href="view-users.jsp?account=partners">
                     <i class="fas fa-users"></i>
                     <span>Partners</span>
                 </a>
@@ -111,8 +111,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Infos Commands:</h6>
-                        <a class="collapse-item" href="#">Receive</a>
-                        <a class="collapse-item" href="#">Realize</a>
+                        <a class="collapse-item" href="#">Current</a>
+                        <a class="collapse-item" href="#">Finalize</a>
 
                     </div>
                 </div>
@@ -127,13 +127,13 @@
                 </a>
                 <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Order Product:</h6>
+                        <h6 class="collapse-header">Product:</h6>
+                        <a class="collapse-item" href="create-product.jsp">New Product</a>
                         <a class="collapse-item" href="view-all.jsp?bool=true">View all</a>
-                        <a class="collapse-item" href="#">Category</a>
+                        <a class="collapse-item" href="#">View Catalog</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">End Product:</h6>
+                        <h6 class="collapse-header">Empty Product:</h6>
                         <a class="collapse-item" href="view-all.jsp?bool=false">View all</a>
-                        <a class="collapse-item" href="#">Category</a>
                     </div>
                 </div>
             </li>
@@ -391,7 +391,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
+                                                Sales (Monthly)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -409,7 +409,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
+                                                Sales (Annual)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -545,44 +545,66 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-xl-8 col-lg-7">
 
-                            <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Session User Active</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Sales Tracking <span
-                                            class="float-right">40%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Customer Database <span
-                                            class="float-right">60%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Payout Details <span
-                                            class="float-right">80%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Account Setup <span
-                                            class="float-right">Complete!</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" style="width: 100%" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>ID-User</th>
+                                                <th>Username</th>
+                                                <th>Date Connexion</th>
+                                                <th>Hour</th>
+                                                <th>Account</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <%
+                                                try {
+                                                    Class.forName("com.mysql.jdbc.Driver");
+                                                    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
+                                                    Statement st = con.createStatement();
+                                                    Statement state = con.createStatement();
+
+                                                    ResultSet rs = st.executeQuery("select * from login order by date_login desc");
+                                                    ResultSet result;
+
+                                                    while (rs.next()){
+                                                        String user_id = rs.getString(2);
+
+                                                        try {
+                                                            result= state.executeQuery("select name, role from users where id_user = '"+ user_id +"'");
+                                                            result.next();
+                                            %>
+                                                <tr>
+                                                    <td><%= rs.getString(2) %></td>
+                                                    <td><%= result.getString(1) %></td>
+                                                    <td><%= rs.getDate(3) %></td>
+                                                    <td><%= rs.getTime(3) %></td>
+                                                    <td >
+                                                        <span class="p-1 rounded bg-gradient-info text-white">
+                                                            <%= result.getString(2) %>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            <%
+                                                        } catch (SQLException throwables) {
+                                                            throwables.printStackTrace();
+                                                        }
+                                                    }
+                                                    con.close();
+                                                }
+                                                catch (Exception e) {
+                                                    e.printStackTrace();
+                                                }
+                                            %>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -590,7 +612,6 @@
                         </div>
 
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -601,7 +622,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2022</span>
                     </div>
                 </div>
             </footer>

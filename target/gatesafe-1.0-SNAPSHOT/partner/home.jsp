@@ -33,7 +33,6 @@
 <body id="page-top">
 <%
     String username = request.getRemoteUser();
-    boolean admin = request.isUserInRole("admin");
 
 %>
 
@@ -48,7 +47,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">GataSafe</div>
+                <div class="sidebar-brand-text mx-3">GateSafe</div>
             </a>
 
             <!-- Divider -->
@@ -95,8 +94,8 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Infos Commands:</h6>
-                        <a class="collapse-item" href="#">Initialize</a>
-                        <a class="collapse-item" href="#">Statut</a>
+                        <a class="collapse-item" href="new-command.jsp">Initialize</a>
+                        <a class="collapse-item" href="command-status.jsp">Statut</a>
 
                     </div>
                 </div>

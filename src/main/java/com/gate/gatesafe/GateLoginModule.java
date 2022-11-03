@@ -43,6 +43,7 @@ public class GateLoginModule implements LoginModule {
 
             String role = null;
             String pass = null;
+            String current_user;
 
             // Convertion du mot de password d'authentifiaction par le SHA-256
             try {
@@ -57,12 +58,16 @@ public class GateLoginModule implements LoginModule {
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
                 Statement st = conn.createStatement();
 
-                ResultSet rs = st.executeQuery("select role from users where name = '"+name+"' and password = '"+pass+"'");
+                ResultSet rs = st.executeQuery("select id_user, role from users where name = '"+name+"' and password = '"+pass+"'");
 
                 if (rs.next()){
-                    role = rs.getString("role");
-                }
+                    current_user = rs.getString(1);
+                    role = rs.getString(2);
 
+                    java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+                    int i = st.executeUpdate("insert into login (id_user, date_login) values ('"+ current_user +"', '"+ date +"')");
+                }
+                conn.close();
             } catch (Exception e) {
                 System.out.print(e);
                 e.printStackTrace();
