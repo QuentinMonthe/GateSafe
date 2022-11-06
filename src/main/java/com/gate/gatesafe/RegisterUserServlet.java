@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.Date;
-import java.util.Objects;
 
-@WebServlet(name = "registerServlet", value = "/register")
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "registerUserServlet", value = "/registerUser")
+public class RegisterUserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
     }
 
@@ -69,14 +69,14 @@ public class RegisterServlet extends HttpServlet {
                     rs.next();
 
                     String current_user_id = rs.getString(1);
-                    String activity = "Create";
+                    String activity = "Create User";
                     Activity trace = new Activity(current_user_id, activity, idUser);
                     String description = trace.getDescription();
                     Date date = trace.getDate();
 
                     int i = st.executeUpdate("insert into users(id_user, name, password, role, email) values ('" + idUser + "','" + userName + "','" + pass + "','" + account + "','" + userEmail + "')");
 
-                    i = st.executeUpdate("insert into activity(author, type, description, date, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idUser + "')");
+                    i = st.executeUpdate("insert into activity(author, type, description, date_log, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idUser + "')");
 
                     response.sendRedirect(request.getContextPath() + "/admin/create-user.jsp");
                 }

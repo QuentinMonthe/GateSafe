@@ -1,8 +1,8 @@
-<%--
+<%@ page import="java.sql.*" %><%--
   Created by IntelliJ IDEA.
   User: NASH
-  Date: 31/10/2022
-  Time: 13:12
+  Date: 05/11/2022
+  Time: 22:56
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,53 +21,19 @@
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-    <style>
-        .form-user{
-            font-size: 0.8rem;
-            border-radius: 1rem;
-            padding: 1.5rem 1rem;
-        }
-    </style>
+    <!-- Custom styles for this page -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <script>
-        function checkFunction() {
-            const pass = document.getElementById("exampleInputPassword");
-            const str = pass.value;
-            if (str != null) {
-                if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
-                    str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
-                    str.length >= 8 && str.length <= 20) {
-                    pass.className += "is-valid";
-
-                    document.getElementById("registerForm").submit();
-                    return true;
-                }
-                else {
-                    pass.className += "is-invalid";
-
-                    const text = document.getElementById("passHelp");
-                    text.innerText = "Password not secure! Please change it";
-                    text.className += "invalid-feedback";
-
-                    return false;
-                }
-            }
-        }
-    </script>
 </head>
 
 <body id="page-top">
 <%
     String username = request.getRemoteUser();
-    boolean admin = request.isUserInRole("admin");
-
 %>
 
 <!-- Page Wrapper -->
@@ -88,7 +54,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
             <a class="nav-link" href="home.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -119,7 +85,7 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link collapsed" href="create-user.jsp">
                 <i class="fas fa-user-plus"></i>
                 <span>New Account</span>
@@ -144,8 +110,8 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Infos Commands:</h6>
-                    <a class="collapse-item" href="#">Receive</a>
-                    <a class="collapse-item" href="#">Realize</a>
+                    <a class="collapse-item" href="#">Current</a>
+                    <a class="collapse-item" href="#">Finalize</a>
 
                 </div>
             </div>
@@ -160,22 +126,31 @@
             </a>
             <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Order Product:</h6>
+                    <h6 class="collapse-header">Product:</h6>
+                    <a class="collapse-item" href="create-product.jsp">New Product</a>
                     <a class="collapse-item" href="view-all.jsp?bool=true">View all</a>
-                    <a class="collapse-item" href="#">Category</a>
+                    <a class="collapse-item" href="#">View Catalog</a>
                     <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">End Product:</h6>
+                    <h6 class="collapse-header">Empty Product:</h6>
                     <a class="collapse-item" href="view-all.jsp?bool=false">View all</a>
-                    <a class="collapse-item" href="#">Category</a>
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseActivity"
+               aria-expanded="true" aria-controls="collapseActivity">
                 <i class="fas fa-fw fa-table"></i>
-                <span>About Us</span></a>
+                <span>Activities Traces</span>
+            </a>
+            <div id="collapseActivity" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Activity type:</h6>
+                    <a class="collapse-item" href="">Connexion</a>
+                    <a class="collapse-item" href="#">Other</a>
+                </div>
+            </div>
         </li>
 
         <!-- Divider -->
@@ -407,7 +382,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Activities Logs</h1>
                     <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
                         <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
                         Administrator
@@ -415,64 +390,71 @@
                 </div>
 
                 <!-- Content Row -->
-                <div class="row justify-content-md-center">
+                <div class="container-fluid">
 
-                    <div class="col col-lg-8 p-5 shadow-lg">
-                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/registerUser" class="user">
-                            <div class="form-group text-center h3">
-                                Create a new user
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Activity Report Logs</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" style="width: 100%" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Author</th>
+                                        <th>Action</th>
+                                        <th>Description</th>
+                                        <th>Date Activity</th>
+                                        <th>Concern</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Author</th>
+                                        <th>Action</th>
+                                        <th>Description</th>
+                                        <th>Date Activity</th>
+                                        <th>Concern</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <%
+                                        try {
+                                            Class.forName("com.mysql.jdbc.Driver");
+                                            java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
+                                            Statement st = con.createStatement();
+                                            Statement state = con.createStatement();
+
+                                            ResultSet rs = st.executeQuery("select * from activity order by date_log desc");
+                                            while (rs.next()){
+                                    %>
+                                    <tr>
+                                        <td><%= rs.getInt(1) %></td>
+                                        <td><%= rs.getString(2) %></td>
+                                        <td><%= rs.getString(3) %></td>
+                                        <td><%= rs.getString(4) %></td>
+                                        <td><%= rs.getDate(5) %></td>
+                                        <td><%= rs.getString(6) %></td>
+
+                                    </tr>
+                                    <%
+                                            }
+                                            con.close();
+                                        }
+                                        catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    %>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputUser">Username</label>
-                                <input type="text" class="form-control form-user" id="exampleInputUser" name="user_name"
-                                       placeholder="Ex. John Doe" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputEmail">Email address</label>
-                                <input type="email" class="form-control form-user" id="exampleInputEmail" name="user_email"
-                                       placeholder="Ex. john@gate.cm" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputPassword">Password</label>
-                                <input type="password" class="form-control form-user " id="exampleInputPassword" name="user_password"
-                                       aria-describedby="passHelp" placeholder="Strong Password with Number, Lowercase, Uppercase, special character" required>
-                                <small id="passHelp" class="form-text text-muted ">Please enter a strong password...</small>
-                            </div>
-
-                            <div class="form-group my-4">
-                                <div class="d-flex justify-content-between">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="admin" id="inlineRadio1">
-                                        <label class="custom-control-label" for="inlineRadio1">Administrator</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="customManager" id="inlineRadio2" >
-                                        <label class="custom-control-label" for="inlineRadio2">Custom Manager</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="partners" id="inlineRadio3">
-                                        <label class="custom-control-label" for="inlineRadio3">Partner</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group my-4">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck" required>
-                                    <label class="custom-control-label" for="customCheck">Check me out</label>
-                                </div>
-                            </div>
-
-                            <input onclick="return checkFunction()" value="Validate" class="btn btn-primary btn-block"
-                                       style="padding: 0.75rem; border-radius: 1rem;">
-
-                        </form>
+                        </div>
                     </div>
-                </div>
 
+
+                </div>
             </div>
             <!-- /.container-fluid -->
 
@@ -483,7 +465,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                    <span>Copyright &copy; Your Website 2022</span>
                 </div>
             </div>
         </footer>
@@ -531,11 +513,11 @@
 <script src="../js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="../vendor/chart.js/Chart.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="../js/demo/chart-area-demo.js"></script>
-<script src="../js/demo/chart-pie-demo.js"></script>
+<script src="../js/demo/datatables-demo.js"></script>
 
 </body>
 

@@ -1,17 +1,18 @@
 # GateSafe
-Implémentation du application web sécurisé en J2EE
 
-Ce projet implémente les mesures de sécurité sur une application en J2EE avec :
-  - Le protocol JAAS pour la sécurité d'authentification
-  - Le protocol JCE pour la sécurité du serveur d'application 
-  - Le protocol JSSE pour le transfert de donnée sécurisé
+## Implementation of web secure application in J2EE
 
-L'application en elle-même est une application base sur l'achitecture trois tier
-  - Serveur d'aaplication : Tomcat v9.0.6
-  - Serveur de donné : MySQL v5.x
-  - Langage du controleur : JAVA (sous JSP et servlet)
-  - Langage des pages : HTML, CSS, JS & Boostrap
+### This project implement the measures security for J2EE application:
+  - Authentication with JAAS protocol
+  - JCE protocol for encrypt secure server application 
+  - Secure communication with SSL to JSSE protocol
 
-L'IDE du projet est IntelliJ IDEA 2021.2.1, pour ceux qui ne l'auront pas reconnu  :-)
+### This application based to MVC architecture
+  - Application Server: *Tomcat v9.0.6*
+  - Database : /MySQL v5.7.6*
+  - Controller : *JAVA (JSP and servlet)*
+  - Front-end : *HTML, CSS, JS & Boostrap 4*
 
-#Application non terminé
+The project's IDE is IntelliJ IDEA 2021.2.1, for people not use to folder structuration :-)
+
+#Application not end

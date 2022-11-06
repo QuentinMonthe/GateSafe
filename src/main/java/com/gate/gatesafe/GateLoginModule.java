@@ -1,15 +1,16 @@
 package com.gate.gatesafe;
 
+import com.gate.gatesafe.PasswordSecure;
+import com.gate.gatesafe.RolePrincipal;
+import com.gate.gatesafe.UserPrincipal;
+
 import javax.security.auth.Subject;
 import javax.security.auth.callback.*;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -56,8 +57,9 @@ public class GateLoginModule implements LoginModule {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
-                Statement st = conn.createStatement();
+                conn.setAutoCommit(false);
 
+                Statement st = conn.createStatement();
                 ResultSet rs = st.executeQuery("select id_user, role from users where name = '"+name+"' and password = '"+pass+"'");
 
                 if (rs.next()){
@@ -65,8 +67,11 @@ public class GateLoginModule implements LoginModule {
                     role = rs.getString(2);
 
                     java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-                    int i = st.executeUpdate("insert into login (id_user, date_login) values ('"+ current_user +"', '"+ date +"')");
+                    int i = st.executeUpdate("update login set date_logout = '"+ date +"' where id_user = '" + current_user + "' and date_login = date_logout");
+                    i = st.executeUpdate("insert into login (id_user, date_login, date_logout) values ('"+ current_user +"', '"+ date +"', '"+ date +"')");
                 }
+                conn.commit();
+
                 conn.close();
             } catch (Exception e) {
                 System.out.print(e);

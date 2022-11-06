@@ -1,6 +1,5 @@
 package com.gate.gatesafe;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Activity {

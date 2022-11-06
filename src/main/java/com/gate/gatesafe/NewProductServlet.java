@@ -1,10 +1,11 @@
 package com.gate.gatesafe;
 
+import com.gate.gatesafe.Activity;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class NewProductServlet extends HttpServlet {
         String describeProduct=request.getParameter("description");
         String categoryProduct=request.getParameter("category");
         String numberProduct=request.getParameter("quantity");
-        String imageProduct="img/undraw_rocket.svg";
+        String imageProduct="../img/undraw_rocket.svg";
 
         String idProduct = "PD";
 
@@ -62,10 +63,9 @@ public class NewProductServlet extends HttpServlet {
 
                     int i = st.executeUpdate("insert into products (id_product, name, price, description, image) values ('" + idProduct + "','" + nameProduct + "','" + priceProduct + "','" + describeProduct + "','" + imageProduct + "')");
 
-                    i = st.executeUpdate("insert into catalog (id_product, number, type) values ('" + idProduct + "','" + numberProduct + "', '" + categoryProduct + "')");
+                    i = st.executeUpdate("insert into activity (author, type, description, date_log, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idProduct + "')");
 
-
-                    i = st.executeUpdate("insert into activity(author, type, description, date, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idProduct + "')");
+                    i = st.executeUpdate("insert into category (id_product, number, type) values ('" + idProduct + "', '" + numberProduct + "', '" + categoryProduct + "')");
 
                     response.sendRedirect(request.getContextPath() + "/admin/home.jsp");
                 }

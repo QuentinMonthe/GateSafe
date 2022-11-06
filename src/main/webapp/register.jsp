@@ -152,7 +152,7 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Create a Partner Account!</h1>
                         </div>
-                        <form class="user" id="regForm" action="${pageContext.request.contextPath}/register" method="post">
+                        <form class="user" id="regForm" action="${pageContext.request.contextPath}/registerUser" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control form-control-user" id="exampleFirstName" name="user_name" placeholder="Username" required>
                             </div>

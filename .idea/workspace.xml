@@ -9,7 +9,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3584dfc6-c77f-47f7-9bc5-cf5645c843b8" name="Changes" comment="Create aacount" />
+    <list default="true" id="3584dfc6-c77f-47f7-9bc5-cf5645c843b8" name="Changes" comment="Create aacount">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/DeleteUserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/UpdateUserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/head.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/script.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/sidebar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/topbar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/view-activities.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/view-connexion.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/partner/view-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GateSafe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GateSafe.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/GateLoginModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/GateLoginModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/NewCommandServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/NewCommandServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/NewProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/NewProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/RegisterUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/create-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/create-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/view-all.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/view-all.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/view-users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/view-users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/new-command.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/new-command.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/responsible-client/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/responsible-client/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/GateLoginModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/GateLoginModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/LogoutServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/LogoutServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/NewCommandServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/NewCommandServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/NewProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/NewProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/RegisterServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/Activity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/Activity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/GateLoginModule.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/GateLoginModule.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/LogoutServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/LogoutServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/NewCommandServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/NewCommandServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/NewProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/NewProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/RegisterServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/create-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/create-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/view-all.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/view-all.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/view-users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/view-users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/new-command.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/new-command.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/responsible-client/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/responsible-client/home.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +107,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/gate/gatesafe" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -67,11 +116,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\java\com\gate\gatesafe" />
+      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp\admin" />
       <recent name="C:\Users\USER PRO\Documents\GateSafe\bd" />
       <recent name="C:\Users\USER PRO\Documents\GateSafe\cert" />
-      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp\admin" />
       <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp" />
-      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\java\com\gate\gatesafe" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\gatesafe\src\main\webapp\admin" />
@@ -214,6 +263,8 @@
       <workItem from="1667288306180" duration="1611000" />
       <workItem from="1667290682724" duration="3467000" />
       <workItem from="1667433995797" duration="19973000" />
+      <workItem from="1667673320076" duration="28223000" />
+      <workItem from="1667750772402" duration="3044000" />
     </task>
     <task id="LOCAL-00001" summary="Create count">
       <created>1666261532452</created>

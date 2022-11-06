@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: NASH
   Date: 01/11/2022
@@ -36,31 +38,6 @@
         }
     </style>
 
-    <script>
-        function checkFunction() {
-            const pass = document.getElementById("exampleInputPassword");
-            const str = pass.value;
-            if (str != null) {
-                if (str.match( /[0-9]/g) && str.match( /[A-Z]/g) &&
-                    str.match(/[a-z]/g) && str.match( /[^a-zA-Z\d]/g) &&
-                    str.length >= 8 && str.length <= 20) {
-                    pass.className += "is-valid";
-
-                    document.getElementById("registerForm").submit();
-                    return true;
-                }
-                else {
-                    pass.className += "is-invalid";
-
-                    const text = document.getElementById("passHelp");
-                    text.innerText = "Password not secure! Please change it";
-                    text.className += "invalid-feedback";
-
-                    return false;
-                }
-            }
-        }
-    </script>
 </head>
 
 <body id="page-top">
@@ -415,37 +392,37 @@
                 </div>
 
                 <!-- Content Row -->
-                <div class="card-deck">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
+                <div class="row">
+                    <%
+                        try {
+                            Class.forName("com.mysql.jdbc.Driver");
+                            java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
+                            Statement st = con.createStatement();
+
+                            ResultSet rs = st.executeQuery("select * from products");
+
+                            while (rs.next()){
+                    %>
+                    <div class="card col-lg-3 text-decoration-none" style="width: 18rem;">
+                        <img class="card-img-top" src="../img/undraw_rocket.svg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">
+                                <%= rs.getString(2) %>
+                            </h5>
+                            <p class="card-text">Description : <%= rs.getString(4) %></p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text-muted">Price : <%= rs.getString(3) %> U</small>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="../img/undraw_admin.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
+                    <%
+                            }
+                            con.close();
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    %>
                 </div>
 
             </div>

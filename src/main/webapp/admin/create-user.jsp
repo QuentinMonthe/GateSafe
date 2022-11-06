@@ -418,7 +418,7 @@
                 <div class="row justify-content-md-center">
 
                     <div class="col col-lg-8 p-5 shadow-lg">
-                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/register" class="user">
+                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/registerUser" class="user">
                             <div class="form-group text-center h3">
                                 Create a new user
                             </div>

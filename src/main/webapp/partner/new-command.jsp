@@ -360,63 +360,63 @@
                 </div>
 
                 <!-- Content Row -->
-                <div class="row justify-content-md-center">
+<%--                <div class="row justify-content-md-center">--%>
 
-                    <div class="col col-lg-8 p-5 shadow-lg">
-                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/newCommand" class="user">
-                            <div class="form-group text-center h3">
-                                Create a new user
-                            </div>
+<%--                    <div class="col col-lg-8 p-5 shadow-lg">--%>
+<%--                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/newCommand" class="user">--%>
+<%--                            <div class="form-group text-center h3">--%>
+<%--                                Create a new user--%>
+<%--                            </div>--%>
 
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputUser">Username</label>
-                                <input type="text" class="form-control form-user" id="exampleInputUser" name="user_name"
-                                       placeholder="Ex. John Doe" required>
-                            </div>
+<%--                            <div class="form-group">--%>
+<%--                                <label class="col-form-label" for="exampleInputUser">Username</label>--%>
+<%--                                <input type="text" class="form-control form-user" id="exampleInputUser" name="user_name"--%>
+<%--                                       placeholder="Ex. John Doe" required>--%>
+<%--                            </div>--%>
 
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputEmail">Email address</label>
-                                <input type="email" class="form-control form-user" id="exampleInputEmail" name="user_email"
-                                       placeholder="Ex. john@gate.cm" required>
-                            </div>
+<%--                            <div class="form-group">--%>
+<%--                                <label class="col-form-label" for="exampleInputEmail">Email address</label>--%>
+<%--                                <input type="email" class="form-control form-user" id="exampleInputEmail" name="user_email"--%>
+<%--                                       placeholder="Ex. john@gate.cm" required>--%>
+<%--                            </div>--%>
 
-                            <div class="form-group">
-                                <label class="col-form-label" for="exampleInputPassword">Password</label>
-                                <input type="password" class="form-control form-user " id="exampleInputPassword" name="user_password"
-                                       aria-describedby="passHelp" placeholder="Strong Password with Number, Lowercase, Uppercase, special character" required>
-                                <small id="passHelp" class="form-text text-muted ">Please enter a strong password...</small>
-                            </div>
+<%--                            <div class="form-group">--%>
+<%--                                <label class="col-form-label" for="exampleInputPassword">Password</label>--%>
+<%--                                <input type="password" class="form-control form-user " id="exampleInputPassword" name="user_password"--%>
+<%--                                       aria-describedby="passHelp" placeholder="Strong Password with Number, Lowercase, Uppercase, special character" required>--%>
+<%--                                <small id="passHelp" class="form-text text-muted ">Please enter a strong password...</small>--%>
+<%--                            </div>--%>
 
-                            <div class="form-group my-4">
-                                <div class="d-flex justify-content-between">
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="admin" id="inlineRadio1">
-                                        <label class="custom-control-label" for="inlineRadio1">Administrator</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="customManager" id="inlineRadio2" >
-                                        <label class="custom-control-label" for="inlineRadio2">Custom Manager</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input class="custom-control-input" type="radio" name="user_account" value="partners" id="inlineRadio3">
-                                        <label class="custom-control-label" for="inlineRadio3">Partner</label>
-                                    </div>
-                                </div>
-                            </div>
+<%--                            <div class="form-group my-4">--%>
+<%--                                <div class="d-flex justify-content-between">--%>
+<%--                                    <div class="custom-control custom-radio custom-control-inline">--%>
+<%--                                        <input class="custom-control-input" type="radio" name="user_account" value="admin" id="inlineRadio1">--%>
+<%--                                        <label class="custom-control-label" for="inlineRadio1">Administrator</label>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="custom-control custom-radio custom-control-inline">--%>
+<%--                                        <input class="custom-control-input" type="radio" name="user_account" value="customManager" id="inlineRadio2" >--%>
+<%--                                        <label class="custom-control-label" for="inlineRadio2">Custom Manager</label>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="custom-control custom-radio custom-control-inline">--%>
+<%--                                        <input class="custom-control-input" type="radio" name="user_account" value="partners" id="inlineRadio3">--%>
+<%--                                        <label class="custom-control-label" for="inlineRadio3">Partner</label>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class="form-group my-4">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck" required>
-                                    <label class="custom-control-label" for="customCheck">Check me out</label>
-                                </div>
-                            </div>
+<%--                            <div class="form-group my-4">--%>
+<%--                                <div class="custom-control custom-checkbox">--%>
+<%--                                    <input type="checkbox" class="custom-control-input" id="customCheck" required>--%>
+<%--                                    <label class="custom-control-label" for="customCheck">Check me out</label>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <input onclick="return checkFunction()" value="Validate" class="btn btn-primary btn-block"
-                                   style="padding: 0.75rem; border-radius: 1rem;">
+<%--                            <input onclick="return checkFunction()" value="Validate" class="btn btn-primary btn-block"--%>
+<%--                                   style="padding: 0.75rem; border-radius: 1rem;">--%>
 
-                        </form>
-                    </div>
-                </div>
+<%--                        </form>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
 
             </div>
