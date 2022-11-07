@@ -55,18 +55,20 @@ public class CreateProductServlet extends HttpServlet {
                 } else {
                     rs = st.executeQuery("select id_user from users where name ='" + current_user + "'");
                     rs.next();
-
                     String current_user_id = rs.getString(1);
+
+                    rs = st.executeQuery("select id_catalog from catalog where category = '"+ categoryProduct +"' and sub_category = '"+ subCategoryProduct +"' ");
+                    rs.next();
+                    int idCatalog = rs.getInt(1);
+
                     String activity = "Create Product";
                     Activity log = new Activity(current_user_id, activity, idProduct);
                     String description = log.getDescription();
                     Date date = log.getDate();
 
-                    int i = st.executeUpdate("insert into products (id_product, name, price, description, image) values ('" + idProduct + "','" + nameProduct + "','" + priceProduct + "','" + describeProduct + "','" + imageProduct + "')");
+                    int i = st.executeUpdate("insert into products (id_product, id_catalog, name, price, quantity, description, image) values ('" + idProduct + "', '"+ idCatalog +"' ,'" + nameProduct + "','" + priceProduct + "', '"+ numberProduct +"' ,'" + describeProduct + "','" + imageProduct + "')");
 
                     if (i > 0) {
-                        i = st.executeUpdate("insert into catalog (id_product, number, category, sub_category) values ('" + idProduct + "', '" + numberProduct + "', '" + categoryProduct + "', '" + subCategoryProduct + "')");
-
                         i = st.executeUpdate("insert into activity (author, type, description, date_log, concern) values ('" + current_user_id + "', '" + activity + "', '" + description + "', '" + date + "', '" + idProduct + "')");
                     }
                     response.sendRedirect(request.getContextPath() + "/admin/create-product.jsp");

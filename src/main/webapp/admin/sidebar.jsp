@@ -94,11 +94,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product:</h6>
                 <a class="collapse-item" href="create-product.jsp">New Product</a>
-                <a class="collapse-item" href="view-products.jsp?category=all">View Product</a>
-                <a class="collapse-item" href="view-catalog.jsp">View Catalog</a>
+                <a class="collapse-item" href="create-catalog.jsp">New Catalog</a>
+                <a class="collapse-item" href="view-products.jsp">View Product</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Empty Product:</h6>
-                <a class="collapse-item" href="view-products.jsp">View all</a>
+                <a class="collapse-item" href="view-products.jsp?status=empty">View empty product</a>
             </div>
         </div>
     </li>

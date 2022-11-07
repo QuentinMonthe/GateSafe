@@ -1,6 +1,7 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: NASH
   Date: 01/11/2022
@@ -55,7 +56,10 @@
                                     <th>ID Product</th>
                                     <th>Name</th>
                                     <th>Price</th>
+                                    <th>Quantity</th>
                                     <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Sub-Category</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -64,81 +68,59 @@
                                     <th>ID Product</th>
                                     <th>Name</th>
                                     <th>Price</th>
+                                    <th>Quantity</th>
                                     <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Sub-Category</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
                                 <%
-                                    String type = request.getParameter("category");
+                                    String status = request.getParameter("category");
 
                                     try {
                                         Class.forName("com.mysql.jdbc.Driver");
                                         java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
                                         Statement st = con.createStatement();
-                                        ResultSet rs;
+                                        Statement state = con.createStatement();
 
-                                        if (type.equals("all")) {
-                                            rs = st.executeQuery("select * from products");
+                                        ResultSet rs;
+                                        ResultSet result;
+
+                                        if (status != null && status.equals("empty")) {
+                                            int zero = 0;
+                                            rs = st.executeQuery("select * from products where quantity = '"+ zero +"'");
                                         } else {
-                                            rs = st.executeQuery("select * from products where id_product = (select id_product from catalog where category = type)");
+                                            rs = st.executeQuery("select * from products");
                                         }
 
                                         while (rs.next()){
+                                            int id = rs.getInt(2);
+
+                                            try {
+
+                                                result = state.executeQuery("select * from catalog where id_catalog = '"+ id +"'");
+                                                result.next();
+
                                 %>
                                 <tr>
                                     <td><%= rs.getString(1) %></td>
-                                    <td><%= rs.getString(2) %></td>
                                     <td><%= rs.getString(3) %></td>
                                     <td><%= rs.getString(4) %></td>
+                                    <td><%= rs.getString(5) %></td>
+                                    <td><%= rs.getString(6) %></td>
+                                    <td><%= result.getString(2) %></td>
+                                    <td><%= result.getString(3) %></td>
                                     <td class="text-center">
                                         <a href="#" data-id=<%= rs.getString(1) %> data-toggle="modal" data-target="#editModal" id="edit" class="p-1 text-white rounded bg-gradient-primary"><i class="fas fa-fw fa-edit"></i></a>
                                         <a href="${pageContext.request.contextPath}/deleteProduct?id=<%= rs.getString(1) %>" class="p-1 text-white rounded bg-gradient-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-
-                                <!-- Edit Modal-->
-                                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editLabel">Edit user information</h5>
-                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <form class="" action="${pageContext.request.contextPath}/updateProduct" method="post">
-                                                <div class="modal-body user">
-                                                    <div class="form-group">
-                                                        <label for="modalID">ID Product</label>
-                                                        <input type="text" class="form-control form-control-user" id="modalID" name="product_id" value=<%= rs.getString(1) %> disabled />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="modalName">Name</label>
-                                                        <input type="text" class="form-control form-control-user" id="modalName" name="product_name" value=<%= rs.getString(2) %> disabled />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="modalPrice">Price</label>
-                                                        <input type="number" class="form-control form-control-user" id="modalPrice" name="product_price" value=<%= rs.getString(3) %> />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="modalDescription">Description</label>
-                                                        <input type="text" class="form-control form-control-user" id="modalDescription" name="product_description" value=<%= rs.getString(4) %> />
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <button class="btn btn-primary" type="submit" >Update</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <%
+                                            } catch (SQLException throwables) {
+                                                throwables.printStackTrace();
+                                            }
                                         }
                                         con.close();
                                     }
