@@ -1,4 +1,4 @@
-<%@ page import="com.gate.gatesafe.PasswordSecure" %>
+<%@ page import="com.gate.gatesafe.jaas.PasswordSecure" %>
 <%@ page import="java.security.NoSuchAlgorithmException" %><%--
   Created by IntelliJ IDEA.
   User: NASH

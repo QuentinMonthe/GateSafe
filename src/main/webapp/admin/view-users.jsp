@@ -39,7 +39,19 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Customers Managers List</h1>
+                    <h1 class="h3 mb-0 text-gray-800">
+                        <%
+                            if (search.equals("partners")) {
+                        %>
+                        Partners List
+                        <%
+                            } else if (search.equals("customManager")) {
+                        %>
+                        Customers Managers List
+                        <%
+                            }
+                        %>
+                    </h1>
                     <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
                         <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
                         Administrator
@@ -74,13 +86,6 @@
                                 </tfoot>
                                 <tbody>
                                 <%
-//                                    String search;
-//                                    if (param.equals("partners")) {
-//                                        search = "partners";
-//                                    } else {
-//                                        search = "customManager";
-//                                    }
-
                                     try {
                                         Class.forName("com.mysql.jdbc.Driver");
                                         java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
@@ -97,7 +102,7 @@
                                     <td><%= rs.getString(4) %></td>
                                     <td class="text-center">
                                         <a href="#" data-id=<%= rs.getString(1) %> data-toggle="modal" data-target="#editModal" id="edit" class="p-1 text-white rounded bg-gradient-primary"><i class="fas fa-fw fa-edit"></i></a>
-                                        <a href="${pageContext.request.contextPath}/deleteUser?id=<%= rs.getString(1) %>&account<%= search %>" class="p-1 text-white rounded bg-gradient-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
+                                        <a href="${pageContext.request.contextPath}/deleteUser?id=<%= rs.getString(1) %>&account=<%= search %>" class="p-1 text-white rounded bg-gradient-danger"><i class="fas fa-fw fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 
@@ -115,13 +120,13 @@
                                             <form class="" action="${pageContext.request.contextPath}/updateUser?account=<%= search %>" method="post">
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <%--                        <label for="modalID">ID User</label>--%>
+                                                        <label for="modalID">ID User</label>
                                                         <input type="text" class="form-control rounded" id="modalID" name="user_id" value=<%= rs.getString(1) %> disabled>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="modalName">Username</label>
-                                                        <input type="text" class="form-control rounded" id="modalName" name="user_name" value=<%= rs.getString(2) %> disable>
+                                                        <input type="text" class="form-control rounded" id="modalName" name="user_name" value=<%= rs.getString(2) %> disabled>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="modalEmail">Email</label>
@@ -141,7 +146,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <%
                                         }
@@ -186,24 +190,7 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="${pageContext.request.contextPath}/logout">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="logoutScript.jsp"/>
 
 <%--<script type="text/javascript">--%>
 <%--    $(document).on("click", "#edit", function () {--%>

@@ -22,6 +22,6 @@
 <!--           userCredCol="password" roleNameCol="role" />-->
 
     <Realm className="org.apache.catalina.realm.JAASRealm" appName="GateSafeLogin"
-           userClassNames="com.gate.gatesafe.UserPrincipal" roleClassNames="com.gate.gatesafe.RolePrincipal" />
+           userClassNames="com.gate.gatesafe.jaas.UserPrincipal" roleClassNames="com.gate.gatesafe.jaas.RolePrincipal" />
 
 </Context>

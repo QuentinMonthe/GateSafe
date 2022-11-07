@@ -70,7 +70,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-handshake"></i>
+            <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Commands</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -87,18 +87,18 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCatalogue"
            aria-expanded="true" aria-controls="collapseCatalogue">
-            <i class="fa fa-list"></i>
+            <i class="fa fa-fw fa-folder-open"></i>
             <span>Catalogue</span>
         </a>
         <div id="collapseCatalogue" class="collapse" aria-labelledby="headingCatalogue" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product:</h6>
                 <a class="collapse-item" href="create-product.jsp">New Product</a>
-                <a class="collapse-item" href="view-all.jsp?bool=true">View all</a>
-                <a class="collapse-item" href="#">View Catalog</a>
+                <a class="collapse-item" href="view-products.jsp?category=all">View Product</a>
+                <a class="collapse-item" href="view-catalog.jsp">View Catalog</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Empty Product:</h6>
-                <a class="collapse-item" href="view-all.jsp?bool=false">View all</a>
+                <a class="collapse-item" href="view-products.jsp">View all</a>
             </div>
         </div>
     </li>
