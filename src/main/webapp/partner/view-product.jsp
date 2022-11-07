@@ -53,18 +53,15 @@
 
                             while (rs.next()){
                     %>
-                    <a href="#" data-toggle="modal" data-target="#commandModal" class="card col-lg-3 mx-3 text-decoration-none" style="width: 18rem;">
-                        <img class="card-img-top" style="width: 16rem;" src="../img/undraw_rocket.svg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= rs.getString(2) %>
-                            </h5>
-                            <p class="card-text">Description : <%= rs.getString(4) %></p>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="../img/placeholder.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Card Image Title</h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Price : <%= rs.getString(3) %> U</small>
-                        </div>
-                    </a>
+                    </div>
                     <%
                             }
                             con.close();
