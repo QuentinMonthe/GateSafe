@@ -9,7 +9,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,8 +86,9 @@
 
                                         while (rs.next()){
                                             String id = rs.getString(1);
+                                            int val = 0;
                                             try {
-                                                result = state.executeQuery("select count(*) from commands where id_customer = '"+ id +"'");
+                                                result = state.executeQuery("select count(*) from commands where id_customer = '"+ id +"'  and status = '"+ val +"' ");
                                                 result.next();
 
                                 %>

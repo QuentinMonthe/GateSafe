@@ -1,11 +1,12 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%--
   Created by IntelliJ IDEA.
   User: NASH
-  Date: 03/11/2022
-  Time: 05:35
+  Date: 08/11/2022
+  Time: 03:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -89,13 +90,13 @@
                                         ResultSet rs;
                                         ResultSet result;
                                         ResultSet result1;
+                                        int val = 1;
 
-                                        rs = st.executeQuery("select * from commands where id_partner = (select id_user from users where name = '"+ user +"') order by date_command desc ");
+                                        rs = st.executeQuery("select * from commands where status = '"+ val +"' and id_command = (select id_command from validate where id_manager = (select id_user from users where name = '"+ user +"')) order by date_command desc ");
 
                                         while (rs.next()){
                                             String id_customer = rs.getString(7);
                                             String id_product = rs.getString(6);
-                                            int val = rs.getInt(2);
                                             String status;
 
                                             try {
@@ -116,20 +117,8 @@
                                     <td><%= rs.getString(4) %></td>
                                     <td><%= result.getString(2) %></td>
                                     <td><%= result.getString(4) %></td>
+                                    <td><span class="p-1 rounded bg-gradient-success text-white"> Deliver </span></td>
 
-                                    <%
-                                        if (val == 0){
-                                            status = "Not Deliver";
-                                    %>
-                                    <td><span class="p-1 rounded bg-gradient-warning text-white"><%= status %></span> </td>
-                                    <%
-                                    } else {
-                                        status = "Deliver";
-                                    %>
-                                    <td><span class="p-1 rounded bg-gradient-success text-white"><%= status %></span> </td>
-                                    <%
-                                        }
-                                    %>
 
                                 </tr>
                                 <%

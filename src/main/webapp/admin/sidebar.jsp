@@ -76,8 +76,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Infos Commands:</h6>
-                <a class="collapse-item" href="#">Current</a>
-                <a class="collapse-item" href="#">Finalize</a>
+                <a class="collapse-item" href="current_command.jsp">Current</a>
+                <a class="collapse-item" href="finalize_command.jsp">Finalize</a>
 
             </div>
         </div>

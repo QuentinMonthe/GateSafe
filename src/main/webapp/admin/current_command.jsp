@@ -1,11 +1,12 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%@ page import="java.sql.SQLException" %>
+<%--
   Created by IntelliJ IDEA.
   User: NASH
-  Date: 03/11/2022
-  Time: 05:35
+  Date: 08/11/2022
+  Time: 03:19
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -36,17 +37,17 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Commands Status</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Current Commands</h1>
                     <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
                         <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
-                        Partner Manager
+                        Administrator
                     </div>
                 </div>
 
                 <!-- Content Row -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Customers Managers</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Current Commands</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -60,7 +61,7 @@
                                     <th>Date</th>
                                     <th>Customer</th>
                                     <th>Address</th>
-                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -72,7 +73,7 @@
                                     <th>Date</th>
                                     <th>Customer</th>
                                     <th>Address</th>
-                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -90,13 +91,20 @@
                                         ResultSet result;
                                         ResultSet result1;
 
-                                        rs = st.executeQuery("select * from commands where id_partner = (select id_user from users where name = '"+ user +"') order by date_command desc ");
+                                        int zero = 0;
+                                        rs = st.executeQuery("select * from commands where status = '"+ zero +"' order by date_command desc ");
 
                                         while (rs.next()){
                                             String id_customer = rs.getString(7);
                                             String id_product = rs.getString(6);
                                             int val = rs.getInt(2);
                                             String status;
+
+                                            if (val == 0) {
+
+                                            } else {
+                                                status = "deliver";
+                                            }
 
                                             try {
 
@@ -105,7 +113,6 @@
 
                                                 result1 = state1.executeQuery("select * from products where id_product = '"+ id_product +"'");
                                                 result1.next();
-
 
                                 %>
                                 <tr>
@@ -116,20 +123,10 @@
                                     <td><%= rs.getString(4) %></td>
                                     <td><%= result.getString(2) %></td>
                                     <td><%= result.getString(4) %></td>
-
-                                    <%
-                                        if (val == 0){
-                                            status = "Not Deliver";
-                                    %>
-                                    <td><span class="p-1 rounded bg-gradient-warning text-white"><%= status %></span> </td>
-                                    <%
-                                    } else {
-                                        status = "Deliver";
-                                    %>
-                                    <td><span class="p-1 rounded bg-gradient-success text-white"><%= status %></span> </td>
-                                    <%
-                                        }
-                                    %>
+                                    <td>
+<%--                                        <a href="${pageContext.request.contextPath}/validateCommand?id=<%= rs.getString(1) %>" class="p-1 text-white rounded bg-gradient-success"><i class="fas fa-fw fa-check-square"></i></a>--%>
+<%--                                        <a href="${pageContext.request.contextPath}/deleteCommand?id=<%= rs.getString(1) %>" class="p-1 text-white rounded bg-gradient-danger"><i class="fas fa-fw fa-trash-alt"></i></a>--%>
+                                    </td>
 
                                 </tr>
                                 <%
@@ -178,7 +175,7 @@
 </a>
 
 <!-- Logout Modal-->
-<jsp:include page="logout.jsp"/>
+<jsp:include page="logoutScript.jsp"/>
 
 <!-- Bootstrap core JavaScript-->
 <jsp:include page="script.jsp"/>

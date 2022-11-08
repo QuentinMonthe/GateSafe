@@ -98,12 +98,6 @@
                                             int val = rs.getInt(2);
                                             String status;
 
-                                            if (val == 0) {
-
-                                            } else {
-                                                status = "deliver";
-                                            }
-
                                             try {
 
                                                 result = state.executeQuery("select * from customer where id_customer = '"+ id_customer +"'");
@@ -130,7 +124,7 @@
                                     <td><span class="p-1 rounded bg-gradient-warning text-white"><%= status %></span> </td>
                                     <%
                                     } else {
-                                        status = "Not Deliver";
+                                        status = "Deliver";
                                     %>
                                     <td><span class="p-1 rounded bg-gradient-success text-white"><%= status %></span> </td>
                                     <%

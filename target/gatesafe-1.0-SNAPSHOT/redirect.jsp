@@ -59,7 +59,7 @@
                         if (responsible || admin) {
                     %>
                     <div class="card  m-4" style="width: 20rem;">
-                        <a href="responsible-client/home.jsp" class="card-link">
+                        <a href="responsible_client/home.jsp" class="card-link">
                             <img class="card-img-top" src="img/undraw_responsable-client.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title text-center">Customer Management</h5>

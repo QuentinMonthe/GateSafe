@@ -22,7 +22,7 @@
     <filter-mapping>
         <filter-name>noCacheFilter</filter-name>
         <url-pattern>/admin/*</url-pattern>
-        <url-pattern>/responsible-client/*</url-pattern>
+        <url-pattern>/responsible_client/*</url-pattern>
         <url-pattern>/partner/*</url-pattern>
         <url-pattern>/redirect.jsp</url-pattern>
     </filter-mapping>
@@ -52,7 +52,7 @@
         <web-resource-collection>
             <web-resource-name>Admin resources</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
-            <url-pattern>/responsible-client/*</url-pattern>
+            <url-pattern>/responsible_client/*</url-pattern>
             <url-pattern>/partner/*</url-pattern>
             <url-pattern>/redirect.jsp</url-pattern>
             <http-method>PUT</http-method>
@@ -72,7 +72,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Responsable client resources</web-resource-name>
-            <url-pattern>/responsible-client/*</url-pattern>
+            <url-pattern>/responsible_client/*</url-pattern>
             <url-pattern>/redirect.jsp</url-pattern>
             <http-method>PUT</http-method>
             <http-method>DELETE</http-method>
