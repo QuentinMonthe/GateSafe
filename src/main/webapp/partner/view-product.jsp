@@ -35,9 +35,9 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Products List</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                        Customer Manager
+                        Partner Manager
                     </a>
                 </div>
 
@@ -48,20 +48,38 @@
                             Class.forName("com.mysql.jdbc.Driver");
                             java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
                             Statement st = con.createStatement();
+                            ResultSet rs;
 
-                            ResultSet rs = st.executeQuery("select * from products");
+                            String search = request.getParameter("sub-category");
+
+                            if (search != null) {
+                                rs = st.executeQuery("select * from products where id_catalog in ( select id_catalog from catalog where sub_category = '"+ search +"')");
+                            } else {
+                                rs = st.executeQuery("select * from products");
+                            }
 
                             while (rs.next()){
                     %>
-                    <div class="col-md-4">
+                    <div class="col-6 col-lg-3 my-2">
                         <div class="card">
-                            <img class="card-img-top" src="../img/placeholder.png" alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title mb-3">Card Image Title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <div class="clearfix">
+                                    <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left text-light"></i>
+                                    <div class="h5 text-secondary mb-0 mt-1"><%= rs.getString(3) %></div>
+                                    <div class="h6 text-muted text-uppercase font-weight-bold font-xs small"><%= rs.getString(4) %> Xaf</div>
+                                </div>
+<%--                                <div class="b-b-1 pt-3">Quantity: <%= rs.getString(5) %></div>--%>
+                                <a href="command.jsp?id=<%= rs.getString(1) %>" class="text-decoration-none">
+                                    <div class="b-b-1 pt-3 text-info">To Order</div>
+                                </a>
+                                <hr>
+                                <div class="more-info pt-2" style="margin-bottom:-10px;">
+                                    <div class="font-xs btn-block text-muted small">Description: <%= rs.getString(6) %></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <%
                             }
                             con.close();

@@ -35,7 +35,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Catalog</h1>
                     <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                         Partner Manager
                     </a>
@@ -81,12 +81,12 @@
                                             <div class="clearfix">
                                                 <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left text-light"></i>
                                                 <div class="h5 text-secondary mb-0 mt-1"><%= result.getString(3) %></div>
-                                                <div class="text-muted text-uppercase font-weight-bold font-xs small"><%= result.getString(4) %></div>
+                                                <div class="text-muted font-xs small"></div>
                                             </div>
-                                            <div class="b-b-1 pt-3"></div>
+                                            <div class="b-b-1 pt-3 text-muted font-xs small"><%= result.getString(4) %></div>
                                             <hr>
                                             <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                                <a class="font-weight-bold font-xs btn-block text-muted small" href="view-product.jsp?category=<%= result.getString(3) %>">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                                                <a class="font-weight-bold font-xs btn-block text-muted small" href="view-product.jsp?sub-category=<%= result.getString(3) %>">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                                             </div>
                                         </div>
                                     </div>

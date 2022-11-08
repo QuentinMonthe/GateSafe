@@ -51,7 +51,7 @@
 
                             <div class="form-row">
                                 <div class="form-group col-lg-4">
-                                    <img id="uploadPreview" style="width: 150px; height: 150px; box-shadow: 1px 1px 10px 1px gray;" src="../img/default.gif"/><br><br>
+                                    <img id="uploadPreview" style="width: 150px; height: 150px; box-shadow: 1px 1px 10px 1px gray;" src="../img/placeholder.png"/><br><br>
                                     <input id="uploadImage" class="text-xs"  type="file" name="image" onchange="PreviewImage();" />
 
                                     <script type="text/javascript">

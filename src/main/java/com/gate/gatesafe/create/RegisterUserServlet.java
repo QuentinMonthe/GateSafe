@@ -65,6 +65,7 @@ public class RegisterUserServlet extends HttpServlet {
 
                 if (current_user == null) {
 
+                    int i = st.executeUpdate("insert into users(id_user, name, password, role, email) values ('" + idUser + "','" + userName + "','" + pass + "','" + account + "','" + userEmail + "')");
                     response.sendRedirect(request.getContextPath() + "/redirect.jsp");
 
                 } else {

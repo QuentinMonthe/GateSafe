@@ -1,8 +1,10 @@
-<%--
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: NASH
-  Date: 03/11/2022
-  Time: 05:45
+  Date: 07/11/2022
+  Time: 20:23
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -33,7 +35,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                    <h1 class="h3 mb-0 text-gray-800">New Command</h1>
                     <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm text-uppercase">
                         <i class="fas fa-user-circle fa-sm text-white px-1" aria-hidden="true"> </i>
                         Administrator
@@ -44,40 +46,43 @@
                 <div class="row justify-content-md-center">
 
                     <div class="col col-lg-8 p-5 shadow-lg">
-                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/createProduct" class="user">
+                        <%
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost/webgate", "root", "");
+                                Statement st = con.createStatement();
+                                ResultSet rs;
+
+                                String search = request.getParameter("id");
+
+                                rs = st.executeQuery("select * from products where id_product = '"+ search +"'");
+
+                                if (rs.next()){
+                        %>
+                        <form method="post" id="registerForm" action="${pageContext.request.contextPath}/createCommand?id=<%= rs.getString(1) %>" class="user">
+
                             <div class="form-group text-center h3">
-                                Create a new product
+                                Product Information
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-lg-4">
-                                    <img id="uploadPreview" style="width: 150px; height: 150px; box-shadow: 1px 1px 10px 1px gray;" src="../img/placeholder.png"/><br><br>
-                                    <input id="uploadImage" class="text-xs"  type="file" name="image" onchange="PreviewImage();" />
-
-                                    <script type="text/javascript">
-                                        function PreviewImage() {
-                                            const oFReader = new FileReader();
-                                            oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
-
-                                            oFReader.onload = function(oFREvent) {
-                                                document.getElementById("uploadPreview").src = oFREvent.target.result;
-                                            };
-                                        };
-                                    </script>
+                                <div class="d-flex align-items-center col-lg-4">
+                                    <img id="" style="width: 150px; height: 150px; box-shadow: 1px 1px 10px 1px gray;" src="<%= rs.getString(7) %>"/><br><br>
+<%--                                    <input id="uploadImage" class="text-xs"  type="file" name="image" onchange="PreviewImage();" />--%>
                                 </div>
 
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                         <label class="col-form-label" for="product">Product Name</label>
-                                        <input type="text" class="form-control form-control-user" id="product" name="product"
-                                               placeholder="Ex. Blue Night" required>
+                                        <input type="text" class="form-control form-control-user" id="product" name="product" value="<%= rs.getString(3) %>"
+                                               placeholder="Ex. Blue Night" disabled>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label class="col-form-label" for="price">Price</label>
-                                            <input type="number" class="form-control form-control-user" id="price" name="price"
-                                                   placeholder="Ex: 250" required>
+                                            <input type="number" class="form-control form-control-user" id="price" name="price" value="<%= rs.getString(4) %>"
+                                                   placeholder="Ex: 250" disabled>
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -89,31 +94,45 @@
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="col-form-label" for="category">Category</label>
-                                    <input type="text" class="form-control form-control-user" id="category" name="category"
-                                           placeholder="Ex: Phone" required>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label class="col-form-label" for="sub-category">Sub Category</label>
-                                    <input type="text" class="form-control form-control-user" id="sub-category" name="sub-category"
-                                           placeholder="Ex: Forfait Data" required>
-                                </div>
+                            <div class="form-group text-center mt-4 h3">
+                                Customer Information
                             </div>
 
                             <div class="form-group">
-                                <label class="col-form-label" for="description">Description</label>
-                                <input type="text" class="form-control form-control-user" id="description" name="description"
-                                          placeholder="Ex: 250U = 05 Go 24 Hrs, 22hH to 06H" required />
+                                <label class="col-form-label" for="name">Name</label>
+                                <input type="text" class="form-control form-control-user" id="name" name="name"
+                                       placeholder="Ex: John Doe" required />
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="col-form-label" for="phone">Phone</label>
+                                    <input type="tel" class="form-control form-control-user" id="phone" name="phone"
+                                           placeholder="Ex: xxx xxx xxx" required>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="col-form-label" for="address">Adress</label>
+                                    <input type="text" class="form-control form-control-user" id="address" name="address"
+                                           placeholder="Ex: Maroua, Pitoire" required>
+                                </div>
                             </div>
 
                             <div class="form-group mt-5">
                                 <input type="submit" value="Validate" class="btn btn-primary btn-user btn-block">
                             </div>
                         </form>
+
+                        <%
+                                }
+                                con.close();
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        %>
                     </div>
+
                 </div>
 
             </div>
@@ -144,7 +163,7 @@
 </a>
 
 <!-- Logout Modal-->
-<jsp:include page="logoutScript.jsp"/>
+<jsp:include page="logout.jsp"/>
 
 <!-- Bootstrap core JavaScript-->
 <jsp:include page="script.jsp"/>

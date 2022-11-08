@@ -10,9 +10,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3584dfc6-c77f-47f7-9bc5-cf5645c843b8" name="Changes" comment="Create aacount">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/placeholder.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/partner/command.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/partner/view-customer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/CreateProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/CreateProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/NewCommandServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/CreateCommandServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/RegisterUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gate/gatesafe/create/RegisterUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/create-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/create-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/img/placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/catalog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/catalog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/command-status.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/command-status.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/logout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/new-command.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/sidebar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/partner/view-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/partner/view-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/create/CreateProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/create/CreateProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/create/NewCommandServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/create/RegisterUserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gate/gatesafe/create/RegisterUserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/create/CreateProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/create/CreateProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/create/NewCommandServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/create/RegisterUserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/WEB-INF/classes/com/gate/gatesafe/create/RegisterUserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/create-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/admin/create-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/catalog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/catalog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/command-status.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/command-status.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/logout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/new-command.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/view-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gatesafe-1.0-SNAPSHOT/partner/view-product.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +106,7 @@
       <recent name="C:\Users\USER PRO\Documents\GateSafe\cert" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER PRO\Documents\GateSafe\src\main\webapp\partner" />
       <recent name="D:\gatesafe\src\main\webapp\admin" />
       <recent name="D:\gatesafe\src\main\webapp" />
       <recent name="D:\gatesafe\src\main\webapp\img" />
@@ -229,7 +255,7 @@
       <workItem from="1667750772402" duration="19750000" />
       <workItem from="1667782406850" duration="4361000" />
       <workItem from="1667787386335" duration="7135000" />
-      <workItem from="1667801588351" duration="7699000" />
+      <workItem from="1667801588351" duration="33774000" />
     </task>
     <task id="LOCAL-00001" summary="Create count">
       <created>1666261532452</created>

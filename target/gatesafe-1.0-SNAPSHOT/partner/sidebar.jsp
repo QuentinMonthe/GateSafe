@@ -38,7 +38,7 @@
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
-    <a class="nav-link" href="#" >
+    <a class="nav-link" href="#" data-toggle="modal" data-target="#userModal" >
       <i class="fas fa-fw fa-user"></i>
       <span>Partner Information</span>
     </a>
@@ -62,7 +62,7 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Infos Commands:</h6>
-        <a class="collapse-item" href="new-command.jsp">Initialize</a>
+        <a class="collapse-item" href="view-customer.jsp">Customer</a>
         <a class="collapse-item" href="command-status.jsp">Status</a>
 
       </div>
