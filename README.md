@@ -9,7 +9,7 @@
 
 ### This application based to MVC architecture
   - Application Server: *Tomcat v9.0.6*
-  - Database : /MySQL v5.7.6*
+  - Database : *MySQL v5.7.6*
   - Controller : *JAVA (JSP and servlet)*
   - Front-end : *HTML, CSS, JS & Boostrap 4*
 
